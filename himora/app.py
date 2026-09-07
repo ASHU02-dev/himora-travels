@@ -90,7 +90,7 @@ PACKAGES = [
 
 # The 4 destinations that appear as stops along the scroll journey on the homepage.
 # Pulls from PACKAGES above so there's only one place to edit prices/blurbs.
-JOURNEY_STOP_NAMES = ["Manali", "Kullu", "Kinnaur", "Kasol"]
+JOURNEY_STOP_NAMES = ["Manali", "Kasol", "Kullu", "Kinnaur"]
 JOURNEY_STOPS = [p for name in JOURNEY_STOP_NAMES for p in PACKAGES if p["name"] == name]
 
 STATS = [
