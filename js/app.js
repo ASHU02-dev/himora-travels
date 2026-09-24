@@ -158,7 +158,7 @@ function renderPackages(category = 'all') {
   container.innerHTML = filtered.map(pkg => `
     <article class="package-card" data-id="${pkg.id}">
       <div class="package-card-media">
-        <img src="${pkg.heroImage}" alt="${pkg.title}" loading="lazy">
+        <img src="${pkg.heroImage}" alt="${pkg.title}" loading="lazy" decoding="async">
         <span class="package-card-badge">${pkg.badge}</span>
         <span class="package-card-duration">${pkg.duration}</span>
         <div class="package-card-altitude">⌖ Max: ${pkg.maxAltitude}</div>
@@ -345,7 +345,7 @@ function renderFamousSites() {
   container.innerHTML = HIMORA_DATA.famousSites.map(loc => `
     <div class="destination-card" onclick="openValleyModal('${loc.id}')">
       <div class="dest-card-media">
-        <img src="${loc.coverImage}" alt="${loc.location}" loading="lazy">
+        <img src="${loc.coverImage}" alt="${loc.location}" loading="lazy" decoding="async">
         <span class="dest-alt-badge">⌖ ${loc.altitude}</span>
         <span class="dest-sites-badge">${loc.items.length} Sites</span>
       </div>
@@ -403,7 +403,7 @@ function openValleyModal(valleyId) {
         ${loc.items.map(site => `
           <div class="site-modal-card">
             <div class="site-modal-media">
-              <img src="${site.image}" alt="${site.name}" loading="lazy">
+              <img src="${site.image}" alt="${site.name}" loading="lazy" decoding="async">
               <span class="site-type-badge">${site.type}</span>
               <span class="site-altitude-badge">⌖ ${site.altitude}</span>
             </div>
@@ -514,7 +514,7 @@ function renderFleet() {
   container.innerHTML = HIMORA_DATA.cabs.map(cab => `
     <div class="cab-card">
       <div class="cab-card-img">
-        <img src="${cab.image}" alt="${cab.name}" loading="lazy">
+        <img src="${cab.image}" alt="${cab.name}" loading="lazy" decoding="async">
         <span class="cab-badge">${cab.badge}</span>
       </div>
       <div class="cab-card-body">
