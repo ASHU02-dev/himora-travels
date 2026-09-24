@@ -99,6 +99,21 @@ function initValleyMap() {
     // Update active pin
     pins.forEach(p => p.classList.toggle('is-selected', p.dataset.valley === valleyKey));
 
+    // Highlight associated highway route
+    const routes = document.querySelectorAll('.map-highway-route');
+    routes.forEach(r => r.classList.remove('is-active-route'));
+
+    if (valleyKey === 'spiti' || valleyKey === 'kinnaur') {
+      const r = document.getElementById('routeHindustanTibet');
+      if (r) r.classList.add('is-active-route');
+    } else if (valleyKey === 'manali') {
+      const r = document.getElementById('routeManaliExp');
+      if (r) r.classList.add('is-active-route');
+    } else if (valleyKey === 'tirthan' || valleyKey === 'kasol') {
+      const r = document.getElementById('routeJalori');
+      if (r) r.classList.add('is-active-route');
+    }
+
     // Fill card
     document.getElementById('mapDetailTitle').textContent = data.title;
     document.getElementById('mapDetailAltitude').textContent = data.altitude;
@@ -136,4 +151,30 @@ function initValleyMap() {
   showValley('spiti');
 }
 
+function filterMapElevations(filterType) {
+  const btns = document.querySelectorAll('.map-filter-btn');
+  btns.forEach(b => b.classList.toggle('is-active', b.dataset.filter === filterType));
+
+  const pins = document.querySelectorAll('.map-valley-pin');
+  pins.forEach(p => {
+    if (filterType === 'all') {
+      p.style.opacity = '1';
+      p.style.pointerEvents = 'auto';
+    } else {
+      const matches = p.dataset.elev === filterType;
+      p.style.opacity = matches ? '1' : '0.25';
+      p.style.pointerEvents = matches ? 'auto' : 'none';
+    }
+  });
+
+  if (filterType === 'high') {
+    const highPin = document.querySelector('.map-valley-pin[data-valley="spiti"]');
+    if (highPin) highPin.click();
+  } else if (filterType === 'mid') {
+    const midPin = document.querySelector('.map-valley-pin[data-valley="manali"]');
+    if (midPin) midPin.click();
+  }
+}
+
 window.initValleyMap = initValleyMap;
+window.filterMapElevations = filterMapElevations;

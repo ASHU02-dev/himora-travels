@@ -297,15 +297,23 @@ function setupModalHandlers() {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closePackageModal();
     });
+  // Fleet modal
+  const fleetModal = document.getElementById('fleetModal');
+  const fleetCloseBtn = document.getElementById('fleetModalCloseBtn');
+  if (fleetCloseBtn) fleetCloseBtn.addEventListener('click', closeFleetModal);
+  if (fleetModal) {
+    fleetModal.addEventListener('click', (e) => {
+      if (e.target === fleetModal) closeFleetModal();
+    });
   }
 
-  // Valley details modal
-  const valleyModal = document.getElementById('valleyDetailModal');
-  const valleyCloseBtn = document.getElementById('valleyModalCloseBtn');
-  if (valleyCloseBtn) valleyCloseBtn.addEventListener('click', closeValleyModal);
-  if (valleyModal) {
-    valleyModal.addEventListener('click', (e) => {
-      if (e.target === valleyModal) closeValleyModal();
+  // Stays modal
+  const staysModal = document.getElementById('staysModal');
+  const staysCloseBtn = document.getElementById('staysModalCloseBtn');
+  if (staysCloseBtn) staysCloseBtn.addEventListener('click', closeStaysModal);
+  if (staysModal) {
+    staysModal.addEventListener('click', (e) => {
+      if (e.target === staysModal) closeStaysModal();
     });
   }
 
@@ -313,8 +321,49 @@ function setupModalHandlers() {
     if (e.key === 'Escape') {
       closePackageModal();
       closeValleyModal();
+      closeFleetModal();
+      closeStaysModal();
     }
   });
+}
+
+function openFleetModal(preselectedCab) {
+  const modal = document.getElementById('fleetModal');
+  if (!modal) return;
+  renderFleet();
+  setupCabFareCalculator();
+  modal.classList.add('is-active');
+  document.body.style.overflow = 'hidden';
+  if (preselectedCab) {
+    setTimeout(() => {
+      const cabEl = document.querySelector(`[data-cab="${preselectedCab}"]`);
+      if (cabEl) cabEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  }
+}
+
+function closeFleetModal() {
+  const modal = document.getElementById('fleetModal');
+  if (modal) {
+    modal.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+}
+
+function openStaysModal() {
+  const modal = document.getElementById('staysModal');
+  if (!modal) return;
+  renderMountainVibes(window.currentVibeFilter || 'all');
+  modal.classList.add('is-active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeStaysModal() {
+  const modal = document.getElementById('staysModal');
+  if (modal) {
+    modal.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
 }
 
 function bookPackageWhatsApp(packageId) {
@@ -342,8 +391,8 @@ function renderFamousSites() {
   const container = document.getElementById('famousSitesContainer');
   if (!container) return;
 
-  container.innerHTML = HIMORA_DATA.famousSites.map(loc => `
-    <div class="destination-card" onclick="openValleyModal('${loc.id}')">
+  container.innerHTML = HIMORA_DATA.famousSites.map((loc, idx) => `
+    <div class="destination-card ${idx >= 6 ? 'dest-card-extra' : ''}" onclick="openValleyModal('${loc.id}')">
       <div class="dest-card-media">
         <img src="${loc.coverImage}" alt="${loc.location}" loading="lazy" decoding="async">
         <span class="dest-alt-badge">⌖ ${loc.altitude}</span>
@@ -365,6 +414,21 @@ function renderFamousSites() {
       </div>
     </div>
   `).join('');
+}
+
+let extraValleysExpanded = false;
+function toggleExtraValleys() {
+  extraValleysExpanded = !extraValleysExpanded;
+  const container = document.getElementById('famousSitesContainer');
+  const btn = document.getElementById('destToggleBtn');
+  if (container) {
+    container.classList.toggle('is-expanded', extraValleysExpanded);
+  }
+  if (btn) {
+    btn.innerHTML = extraValleysExpanded 
+      ? '✦ Show Major 6 Valleys ▴' 
+      : '✦ View All 8+ Himalayan Valleys &amp; Offbeat Circuits (Kinnaur, Bir Billing) ▾';
+  }
 }
 
 function openValleyModal(valleyId) {
@@ -767,4 +831,9 @@ window.bookVibeExperience = bookVibeExperience;
 window.openValleyModal = openValleyModal;
 window.closeValleyModal = closeValleyModal;
 window.inquireValleyWhatsApp = inquireValleyWhatsApp;
+window.openFleetModal = openFleetModal;
+window.closeFleetModal = closeFleetModal;
+window.openStaysModal = openStaysModal;
+window.closeStaysModal = closeStaysModal;
+window.toggleExtraValleys = toggleExtraValleys;
 
