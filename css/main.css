@@ -3056,3 +3056,627 @@ body.theme-dark .vibe-chip {
     display: flex;
   }
 }
+
+/* ==========================================================================
+   AGENCY TAB NAVIGATION BAR (CLEAN & NON-LENGTHY APP ARCHITECTURE)
+   ========================================================================== */
+.agency-tab-bar {
+  position: sticky;
+  top: 73px;
+  z-index: 95;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-glass);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+}
+
+body.theme-dark .agency-tab-bar {
+  background: rgba(4, 12, 23, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.agency-tab-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.agency-tab-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.agency-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.agency-tab-btn .tab-icon {
+  font-size: 1.1rem;
+}
+
+.agency-tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(2, 132, 199, 0.08);
+}
+
+body.theme-dark .agency-tab-btn:hover {
+  background: rgba(56, 189, 248, 0.12);
+  color: #fff;
+}
+
+.agency-tab-btn.is-active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+body.theme-dark .agency-tab-btn.is-active {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.45);
+}
+
+/* Tab Panels */
+.agency-tab-panel {
+  display: none;
+  opacity: 0;
+  animation: tabFadeIn 0.3s ease forwards;
+}
+
+.agency-tab-panel.is-active {
+  display: block;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   REAL VIDEO HERO & CONTROLS
+   ========================================================================== */
+.hero-cinematic-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.48) saturate(1.18);
+  transform: scale(1.02);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-video-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #e0f2fe;
+  backdrop-filter: blur(8px);
+  margin-bottom: 1.2rem;
+}
+
+.hero-video-toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10;
+  background: rgba(7, 26, 43, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-fast);
+}
+
+.hero-video-toggle:hover {
+  background: rgba(2, 132, 199, 0.85);
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   WHAT WE DO — AGENCY SERVICES SECTION (CLEAN & SHORT HOMEPAGE)
+   ========================================================================== */
+.agency-services-section {
+  padding: 4.5rem 0 3.5rem;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.agency-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.agency-service-card {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.agency-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.agency-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+body.theme-dark .agency-service-card:hover {
+  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.2);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.agency-service-card:hover::before {
+  opacity: 1;
+}
+
+.agency-service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(2, 132, 199, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: var(--accent-sky);
+}
+
+.agency-service-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.agency-service-card p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.agency-service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.agency-service-features li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.agency-service-features li span {
+  color: #10b981;
+  font-weight: 800;
+}
+
+.agency-service-card .btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* ==========================================================================
+   AUTO-CHANGING LOCATION SHOWCASE / IMAGE GALLERY (ADVENTURES & FOOD)
+   ========================================================================== */
+.agency-showcase-section {
+  padding: 4rem 0;
+  background: var(--bg-deep);
+}
+
+.agency-showcase-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+body.theme-dark .agency-showcase-card {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animated Progress Bar */
+.showcase-progress-wrap {
+  width: 100%;
+  height: 4px;
+  background: rgba(2, 132, 199, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+  transition: width 0.1s linear;
+}
+
+.showcase-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  min-height: 460px;
+}
+
+.showcase-media {
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.showcase-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.65) 100%);
+  pointer-events: none;
+}
+
+.showcase-floating-badges {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.showcase-alt-badge {
+  background: rgba(7, 26, 43, 0.78);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.showcase-live-tag {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+
+.showcase-media-caption {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1.2rem;
+  right: 1.2rem;
+  color: #fff;
+  z-index: 2;
+}
+
+.showcase-media-caption h4 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.showcase-media-caption p {
+  color: #e2e8f0;
+  font-size: 0.88rem;
+}
+
+/* Content Side */
+.showcase-body {
+  padding: 2.2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.showcase-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent-sky);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.showcase-body h3 {
+  font-size: 1.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.showcase-tagline {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Feature Boxes (Adventure & Food) */
+.showcase-features-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.8rem;
+}
+
+.showcase-feature-item {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.showcase-feat-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.showcase-feat-text strong {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.showcase-feat-text span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Showcase Action Group */
+.showcase-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.showcase-actions .btn {
+  flex: 1;
+}
+
+/* Controls Bar */
+.showcase-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.showcase-nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-deep);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.showcase-nav-btn:hover {
+  background: var(--accent-sky);
+  color: #fff;
+  border-color: var(--accent-sky);
+}
+
+.showcase-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.showcase-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--border-glass-light);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.showcase-dot.is-active {
+  width: 28px;
+  background: var(--accent-sky);
+}
+
+.showcase-counter {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   QUICK ROUTE BOOKING STRIP
+   ========================================================================== */
+.agency-booking-strip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.8rem;
+  box-shadow: var(--shadow-sm);
+  margin: 3rem auto 0;
+  max-width: 1100px;
+}
+
+.agency-strip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.strip-field label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.strip-field select {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-deep);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+/* Responsive adjustments for new tabs & components */
+@media (max-width: 1024px) {
+  .agency-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .showcase-layout {
+    grid-template-columns: 1fr;
+  }
+  .showcase-media {
+    min-height: 280px;
+  }
+  .agency-strip-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .agency-tab-bar {
+    top: 65px;
+  }
+  .agency-tab-inner {
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+  }
+  .agency-tab-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+  }
+  .agency-services-grid {
+    grid-template-columns: 1fr;
+  }
+  .showcase-body {
+    padding: 1.5rem 1.2rem;
+  }
+  .showcase-actions {
+    flex-direction: column;
+  }
+  .showcase-actions .btn {
+    width: 100%;
+  }
+  .agency-strip-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-video-toggle {
+    bottom: 1rem;
+    right: 1rem;
+    width: 38px;
+    height: 38px;
+  }
+}
+

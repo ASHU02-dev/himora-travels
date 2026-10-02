@@ -28,15 +28,11 @@
     </a>
 
     <nav class="main-nav" aria-label="Main Navigation">
-      <a href="#planner">Trip Customizer</a>
-      <a href="#packages">Journeys</a>
-      <a href="#famous-sites">Famous Sites & Activities</a>
-      <a href="#vibes">Snow & Stays</a>
-      <a href="#valley-map">Valley Map</a>
-      <a href="#fleet">Taxis & 4x4 Fleet</a>
-      <a href="#international">Foreign Concierge</a>
-      <a href="#reviews">Stories</a>
-      <a href="#faqs">FAQs</a>
+      <a href="#" data-switch-tab="home">Home &amp; Agency</a>
+      <a href="#" data-switch-tab="explore">Explore Valleys</a>
+      <a href="#" data-switch-tab="cabs">Cabs &amp; Budget</a>
+      <a href="#" data-switch-tab="stays">Mountain Stays</a>
+      <a href="#" data-switch-tab="booking">Custom Plan</a>
     </nav>
 
     <div class="header-right">
@@ -65,7 +61,7 @@
         <span id="themeToggleIcon">🌙</span>
       </button>
 
-      <a href="#planner" class="btn btn-solid btn-sm">Plan Trip</a>
+      <a href="#" data-switch-tab="booking" class="btn btn-solid btn-sm">Plan Trip</a>
     </div>
   </header>
 
@@ -79,65 +75,683 @@
     </div>
   </div>
 
+  <!-- ===================================================================
+       2B. AGENCY APP TAB NAVIGATION BAR (CLEAN & NON-LENGTHY)
+       =================================================================== -->
+  <nav class="agency-tab-bar" id="agencyTabBar" aria-label="Agency Navigation Tabs">
+    <div class="container agency-tab-inner">
+      <button class="agency-tab-btn is-active" data-tab="tab-home" aria-selected="true">
+        <span class="tab-icon">🏠</span>
+        <span class="tab-text">Home &amp; Agency</span>
+      </button>
+      <button class="agency-tab-btn" data-tab="tab-explore" aria-selected="false">
+        <span class="tab-icon">🗺️</span>
+        <span class="tab-text">Explore Valleys</span>
+      </button>
+      <button class="agency-tab-btn" data-tab="tab-cabs" aria-selected="false">
+        <span class="tab-icon">🚗</span>
+        <span class="tab-text">Cabs &amp; Budget</span>
+      </button>
+      <button class="agency-tab-btn" data-tab="tab-stays" aria-selected="false">
+        <span class="tab-icon">🏡</span>
+        <span class="tab-text">Mountain Stays</span>
+      </button>
+      <button class="agency-tab-btn" data-tab="tab-booking" aria-selected="false">
+        <span class="tab-icon">📋</span>
+        <span class="tab-text">Custom Plan &amp; Book</span>
+      </button>
+    </div>
+  </nav>
+
   <main id="top">
 
     <!-- ===================================================================
-         3. HERO SECTION (Atmospheric Video & Mountain Visuals)
+         PANEL 1: HOME & WHAT WE DO (CRISP, NON-LENGTHY, AUTO-SHOWCASE, VIDEO)
          =================================================================== -->
-    <section class="hero">
-      <div class="hero-video-backdrop">
-        <img src="images/landmarks/rohtang.jpg" alt="Rohtang Pass High Himalayas" class="hero-cinematic-bg" fetchpriority="high" decoding="async">
-      </div>
-      <div class="hero-gradient-overlay"></div>
-
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span>✦</span> BEYOND ORDINARY TOURISM • THE WESTERN HIMALAYAS
+    <div class="agency-tab-panel is-active" id="tab-home">
+      <!-- 1. HERO SECTION WITH REAL COPYRIGHT-FREE HIMALAYAN SNOW DRIVE VIDEO -->
+      <section class="hero">
+        <div class="hero-video-backdrop">
+          <video id="heroVideo" class="hero-cinematic-video" autoplay muted loop playsinline preload="auto" poster="images/landmarks/rohtang.jpg">
+            <source src="assets/video/himalaya_snow_drive.webm" type="video/webm">
+          </video>
+          <img src="images/landmarks/rohtang.jpg" alt="Rohtang Pass High Himalayas" class="hero-cinematic-bg hero-video-fallback" fetchpriority="high" decoding="async">
         </div>
+        <div class="hero-gradient-overlay"></div>
+        <button class="hero-video-toggle" id="heroVideoToggle" aria-label="Pause/Play Video" title="Pause/Play Himalayan Snow Drive Video">⏸</button>
 
-        <h1>
-          Experience The Untamed<br>
-          <strong>Himalayas.</strong>
-        </h1>
+        <div class="hero-content">
+          <div class="hero-video-badge">
+            <span class="pulse-dot"></span> REAL HIMALAYAN SNOW ROUTE • ROHTANG PASS • PIR PANJAL
+          </div>
 
-        <p class="hero-subtitle">
-          Curated high-altitude 4x4 expeditions, secluded apple orchard chalets, and private chauffeurs. Designed by native mountain explorers in Shimla for discerning travelers across the world.
-        </p>
+          <h1>
+            Himachal's Trusted Travel Agency.<br>
+            <strong>Bespoke Journeys, Cabs &amp; Stays.</strong>
+          </h1>
 
-        <div class="hero-cta-group">
-          <a href="#planner" class="btn btn-solid">
-            <span>✨</span> Build Custom Itinerary
-          </a>
-          <a href="#packages" class="btn btn-outline">
-            Explore All 10 Journeys ➔
-          </a>
-          <a href="#" class="btn btn-emerald js-whatsapp-direct" data-msg="Hello Himora Travels! I would like to consult with a mountain specialist.">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.3-1.2-3.2-2.8-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4L9.3 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.8 2.8 4.5 3.8 2.1.8 2.5.6 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
-            Chat with Local Native
-          </a>
+          <p class="hero-subtitle">
+            Native Shimla travel specialists crafting personalized Himalayan tour packages, reliable hill-certified cabs, and handpicked wooden chalets across Manali, Spiti, Kasol, and Dharamshala.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn btn-solid" data-switch-tab="booking">
+              <span>✨</span> Plan Custom Trip
+            </button>
+            <button class="btn btn-outline" data-switch-tab="cabs">
+              🚗 Check Cab Rates ➔
+            </button>
+            <a href="#" class="btn btn-emerald js-whatsapp-direct" data-msg="Hello Himora Travels! I would like to consult with a mountain specialist.">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.3-1.2-3.2-2.8-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4L9.3 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.8 2.8 4.5 3.8 2.1.8 2.5.6 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+              Chat with Local Team
+            </a>
+          </div>
+
+          <div class="hero-highlights-strip">
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Licensed Hill Drivers &amp; Snow Chains</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Transparent Per-KM / Fixed Route Rates</span>
+            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 24/7 Shimla Native On-Ground Support</span>
+          </div>
         </div>
+      </section>
 
-        <div class="hero-highlights-strip">
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Shimla-Native Expedition Guides</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 4x4 Hill-Certified Chauffeur Fleet</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> International Permits & AMS Safety</span>
+      <!-- 2. WHAT WE DO — TRAVEL AGENCY SERVICES -->
+      <section class="agency-services-section">
+        <div class="container">
+          <div class="section-head" style="margin-bottom:2rem;">
+            <span class="section-tag">Himachal Local Travel Agency</span>
+            <h2>What We Do: <strong>End-To-End Mountain Travel</strong></h2>
+            <p>We are a certified Himachal-based travel and taxi agency headquartered in Shimla. We eliminate the middlemen and handle your entire Himalayan itinerary directly with local expertise.</p>
+          </div>
+
+          <div class="agency-services-grid">
+            <div class="agency-service-card">
+              <div class="agency-service-icon">🚗</div>
+              <h3>Cabs &amp; Hill Chauffeurs</h3>
+              <p>Reliable door-to-door transit from Chandigarh &amp; Delhi airports across all Himachal circuits.</p>
+              <ul class="agency-service-features">
+                <li><span>✓</span> Alto, Dzire, Innova, Thar &amp; Tempo</li>
+                <li><span>✓</span> Certified mountain hill drivers</li>
+                <li><span>✓</span> All toll, tax &amp; state permits included</li>
+              </ul>
+              <button class="btn btn-solid btn-sm" data-switch-tab="cabs">Check Cab Rates ➔</button>
+            </div>
+
+            <div class="agency-service-card">
+              <div class="agency-service-icon">🏔️</div>
+              <h3>Tailored Tour Packages</h3>
+              <p>Custom itineraries designed for families, honeymooners, and high-altitude 4x4 road trip explorers.</p>
+              <ul class="agency-service-features">
+                <li><span>✓</span> Manali, Spiti, Kasol &amp; Shimla</li>
+                <li><span>✓</span> Handcrafted day-by-day roadmaps</li>
+                <li><span>✓</span> Transparent native pricing</li>
+              </ul>
+              <button class="btn btn-solid btn-sm" data-switch-tab="explore">Explore Valleys &amp; Tours ➔</button>
+            </div>
+
+            <div class="agency-service-card">
+              <div class="agency-service-icon">🏡</div>
+              <h3>Curated Mountain Stays</h3>
+              <p>Verified wooden chalets, apple orchard farmstays, and riverside luxury camping under starlit skies.</p>
+              <ul class="agency-service-features">
+                <li><span>✓</span> Deodar wood heating &amp; bonfires</li>
+                <li><span>✓</span> Fresh farm-to-table Himachali meals</li>
+                <li><span>✓</span> Stunning snow &amp; pine valley views</li>
+              </ul>
+              <button class="btn btn-solid btn-sm" data-switch-tab="stays">Browse Stays ➔</button>
+            </div>
+
+            <div class="agency-service-card">
+              <div class="agency-service-icon">🛡️</div>
+              <h3>24/7 Ground Assistance</h3>
+              <p>Native emergency backup, foreign passport Inner Line Permits (ILP), and high altitude AMS safety.</p>
+              <ul class="agency-service-features">
+                <li><span>✓</span> Portable medical oxygen canisters</li>
+                <li><span>✓</span> Official ILP permit documentation</li>
+                <li><span>✓</span> English-fluent local escorts</li>
+              </ul>
+              <button class="btn btn-solid btn-sm" data-switch-tab="booking">Plan Custom Trip ➔</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. AUTO-CHANGING LOCATION SHOWCASE (ADVENTURES & FAMOUS FOOD SITES) -->
+      <section class="agency-showcase-section" id="agencyShowcaseContainer">
+        <div class="container">
+          <div class="section-head" style="margin-bottom:2rem;">
+            <span class="section-tag">Auto-Rotating Highlights</span>
+            <h2>Famous Sites, <strong>Adventure Activities &amp; Local Food</strong></h2>
+            <p>No lengthy page browsing required — watch top Himalayan hubs auto-rotate with their key highlights, adventure sports, and famous regional culinary stops.</p>
+          </div>
+
+          <div class="agency-showcase-card">
+            <!-- Animated Progress Bar -->
+            <div class="showcase-progress-wrap">
+              <div class="showcase-progress-bar" id="showcaseProgressBar"></div>
+            </div>
+
+            <div class="showcase-layout">
+              <!-- Media Side -->
+              <div class="showcase-media">
+                <img id="showcaseImg" src="images/landmarks/solang.jpg" alt="Manali & Solang" class="showcase-img" loading="lazy" decoding="async">
+                <div class="showcase-media-overlay"></div>
+                
+                <div class="showcase-floating-badges">
+                  <span class="showcase-alt-badge" id="showcaseAlt">▲ 2,050m - 3,978m</span>
+                  <span class="showcase-live-tag">● HIGHLIGHT</span>
+                </div>
+
+                <div class="showcase-media-caption">
+                  <h4 id="showcaseCapTitle">Manali &amp; Solang Valley</h4>
+                  <p id="showcaseCapSub">Year-Round (Dec-Feb for Heavy Snow)</p>
+                </div>
+              </div>
+
+              <!-- Content Side -->
+              <div class="showcase-body">
+                <div>
+                  <div class="showcase-eyebrow">✦ Iconic Valley Spotlight</div>
+                  <h3 id="showcaseTitle">Manali &amp; Solang Valley</h3>
+                  <p class="showcase-tagline" id="showcaseTagline">High Snow Glaciers, Rohtang Pass &amp; Bohemian Riverside Cafes</p>
+
+                  <div class="showcase-features-stack">
+                    <div class="showcase-feature-item">
+                      <div class="showcase-feat-icon">🪂</div>
+                      <div class="showcase-feat-text">
+                        <strong>Top Adventure Activities:</strong>
+                        <span id="showcaseAdvText">Snow Skiing at Solang, Rohtang Snowmobiling, Tandem Paragliding, Beas River Rafting, ATV Quad Biking</span>
+                      </div>
+                    </div>
+
+                    <div class="showcase-feature-item">
+                      <div class="showcase-feat-icon">🍲</div>
+                      <div class="showcase-feat-text">
+                        <strong>Famous Food Sites &amp; Cafes:</strong>
+                        <span id="showcaseFoodText">Authentic Himachali Siddu with hot pure ghee, Wood-smoked Beas river trout, Bohemian cafes in Old Manali</span>
+                      </div>
+                    </div>
+
+                    <div class="showcase-feature-item">
+                      <div class="showcase-feat-icon">🚗</div>
+                      <div class="showcase-feat-text">
+                        <strong>Recommended Cab &amp; Route:</strong>
+                        <span id="showcaseDriveText">7 hrs from Chandigarh via NH-3 Expressway • Swift Dzire or Innova Crysta</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="showcase-actions">
+                    <button class="btn btn-solid" id="showcaseDetailsBtn">
+                      View Valley Details ➔
+                    </button>
+                    <button class="btn btn-outline" id="showcaseBookCabBtn">
+                      Book Cab For This Valley
+                    </button>
+                  </div>
+
+                  <div class="showcase-controls-bar">
+                    <button class="showcase-nav-btn" id="showcasePrevBtn" aria-label="Previous Slide">‹</button>
+                    <div class="showcase-dots">
+                      <button class="showcase-dot is-active" onclick="selectShowcaseSlide(0)" aria-label="Slide 1"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(1)" aria-label="Slide 2"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(2)" aria-label="Slide 3"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(3)" aria-label="Slide 4"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(4)" aria-label="Slide 5"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(5)" aria-label="Slide 6"></button>
+                    </div>
+                    <span class="showcase-counter" id="showcaseCounter">01 / 06</span>
+                    <button class="showcase-nav-btn" id="showcaseNextBtn" aria-label="Next Slide">›</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Route Booking Strip -->
+          <div class="agency-booking-strip">
+            <div class="agency-strip-grid">
+              <div class="strip-field">
+                <label>Pickup Location</label>
+                <select id="stripPickup">
+                  <option value="Chandigarh Airport / Station">Chandigarh Airport (IXC)</option>
+                  <option value="Delhi IGI Airport (T3)">Delhi Airport (DEL T3)</option>
+                  <option value="Shimla Mall Road">Shimla (Himora HQ)</option>
+                  <option value="Bhuntar Airport (Kullu/Manali)">Bhuntar Airport (KUU)</option>
+                </select>
+              </div>
+              <div class="strip-field">
+                <label>Destination Valley</label>
+                <select id="stripDest">
+                  <option value="Manali & Solang Valley">Manali &amp; Solang</option>
+                  <option value="Spiti Valley & Chandratal">Spiti Valley (Kaza)</option>
+                  <option value="Kasol & Parvati Valley">Kasol &amp; Tosh</option>
+                  <option value="Shimla & Kufri">Shimla &amp; Kufri</option>
+                  <option value="Dharamshala & Bir Billing">Dharamshala &amp; Bir</option>
+                  <option value="Tirthan Valley & Jibhi">Tirthan &amp; Jibhi</option>
+                </select>
+              </div>
+              <div class="strip-field">
+                <label>Service Needed</label>
+                <select id="stripService">
+                  <option value="Dedicated Cab / Taxi Only">Private Cab / Taxi Only</option>
+                  <option value="All-Inclusive Tour Package">All-Inclusive Tour Package</option>
+                  <option value="Homestay & Chalet Booking">Homestay &amp; Chalet Booking</option>
+                </select>
+              </div>
+              <button class="btn btn-emerald" id="stripSubmitBtn" style="height:44px;">
+                Get Instant Quote on WhatsApp ➔
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. STATS STRIP -->
+<section class="stats-strip">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <span class="stat-number" data-target="7">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Years of Mountain Expeditions</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="3800">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Happy Explorers Escorted</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="32">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">High Valleys & Villages Reached</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="4.95">0</span><span class="stat-suffix">/5</span>
+          <span class="stat-label">Average Traveler Rating</span>
         </div>
       </div>
     </section>
 
+      <!-- 5. TESTIMONIALS -->
+<section class="testimonials-section container" id="reviews">
+      <div class="section-head">
+        <span class="section-tag">Word from Wanderers</span>
+        <h2>Stories From The <strong>High Passes</strong></h2>
+        <p>Read unfiltered experiences from travelers across Sweden, Australia, Germany, and India who traversed the mountains with Himora.</p>
+      </div>
+
+      <div class="testi-stage" id="testiCardsContainer">
+        <!-- Rendered via app.js -->
+      </div>
+      <div class="testi-dots" id="testiDotsContainer"></div>
+    </section>
+    </div>
+
+
     <!-- ===================================================================
-         4. LIVE VALLEY WEATHER TELEMETRY
+         PANEL 2: EXPLORE VALLEYS (MAP, SITES, & SIGNATURE JOURNEYS)
          =================================================================== -->
-    <section class="weather-telemetry-section container">
+    <div class="agency-tab-panel" id="tab-explore">
+<section class="weather-telemetry-section container">
       <div class="weather-grid" id="weatherGrid">
         <!-- Rendered via app.js -->
       </div>
     </section>
+<section class="map-visualizer-section" id="valley-map">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Topographical Navigator</span>
+          <h2>Explore Himachal by <strong>Altitude & Mountain Passes</strong></h2>
+          <p>Interactive topographic relief map displaying major Himalayan river systems, snow peaks, and national highway arteries. Click on any valley pin to inspect elevation, travel time, and routes.</p>
+        </div>
+
+        <div class="map-visualizer-layout">
+          <!-- Left: Mountain Map with Interactive Topography & Pins -->
+          <div class="map-viewport">
+            <!-- Map Top Bar Controls -->
+            <div class="map-top-bar">
+              <div class="map-badge-group">
+                <span class="map-live-tag"><span class="pulse-dot"></span> HIMALAYAN RADAR</span>
+                <span class="map-coords-tag">LAT 31.10° N • ELEV 1,457m - 4,551m</span>
+              </div>
+              <div class="map-filter-pills">
+                <button class="map-filter-btn is-active" data-filter="all" onclick="filterMapElevations('all')">All Valleys</button>
+                <button class="map-filter-btn" data-filter="high" onclick="filterMapElevations('high')">High Pass (3000m+)</button>
+                <button class="map-filter-btn" data-filter="mid" onclick="filterMapElevations('mid')">Valleys (&lt;2500m)</button>
+              </div>
+            </div>
+
+            <!-- Topographic Relief SVG with Snow Peaks & Rivers -->
+            <svg class="map-svg-canvas" viewBox="0 0 1000 650" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+                <linearGradient id="snowPeakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="50%" stop-color="#e0f2fe"/>
+                  <stop offset="100%" stop-color="#0284c7" stop-opacity="0.2"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Topographic Elevation Contour Lines -->
+              <path class="topo-contour" d="M 0,220 C 180,180 320,320 520,240 C 720,160 850,280 1000,210" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="1.5" />
+              <path class="topo-contour" d="M 0,310 C 220,260 400,390 620,300 C 800,220 900,330 1000,290" fill="none" stroke="rgba(56,189,248,0.2)" stroke-width="1.2" />
+              <path class="topo-contour" d="M 0,420 C 250,380 450,490 700,410 C 850,350 940,430 1000,390" fill="none" stroke="rgba(56,189,248,0.15)" stroke-width="1" />
+              <path class="topo-contour" d="M 0,520 C 280,480 500,560 760,490 C 890,440 960,510 1000,480" fill="none" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
+
+              <!-- Snow Peaks -->
+              <polygon points="860,250 890,140 920,250" fill="url(#snowPeakGrad)" opacity="0.45" />
+              <polygon points="880,175 890,140 900,175" fill="#ffffff" opacity="0.95" />
+              <text x="890" y="130" class="map-label-peak" text-anchor="middle">▲ Kinner Kailash 6,050m</text>
+
+              <polygon points="730,190 770,90 810,190" fill="url(#snowPeakGrad)" opacity="0.5" />
+              <polygon points="755,125 770,90 785,125" fill="#ffffff" opacity="0.95" />
+              <text x="770" y="80" class="map-label-peak" text-anchor="middle">▲ Kunzum Pass 4,551m</text>
+
+              <polygon points="410,230 450,130 490,230" fill="url(#snowPeakGrad)" opacity="0.45" />
+              <polygon points="435,165 450,130 465,165" fill="#ffffff" opacity="0.9" />
+              <text x="450" y="120" class="map-label-peak" text-anchor="middle">▲ Rohtang Glacier 3,978m</text>
+
+              <polygon points="130,220 170,120 210,220" fill="url(#snowPeakGrad)" opacity="0.4" />
+              <polygon points="155,155 170,120 185,155" fill="#ffffff" opacity="0.9" />
+              <text x="170" y="110" class="map-label-peak" text-anchor="middle">▲ Dhauladhar Crest 3,800m</text>
+
+              <!-- Glacial River Channels -->
+              <path id="riverBeas" class="map-river-path" d="M 460,140 Q 440,240 420,320 T 320,440 T 150,560" fill="none" stroke="url(#riverGrad)" stroke-width="2.5" opacity="0.65" />
+              <text x="340" y="400" class="map-label-river" transform="rotate(-30 340,400)">~ Beas River ~</text>
+
+              <path id="riverSatluj" class="map-river-path" d="M 940,240 Q 820,320 680,410 T 520,490 T 360,590" fill="none" stroke="url(#riverGrad)" stroke-width="3" opacity="0.65" />
+              <text x="660" y="440" class="map-label-river" transform="rotate(-15 660,440)">~ Satluj River ~</text>
+
+              <path id="riverParvati" class="map-river-path" d="M 640,260 Q 560,310 440,320" fill="none" stroke="url(#riverGrad)" stroke-width="2" opacity="0.75" />
+              <text x="540" y="300" class="map-label-river">~ Parvati River ~</text>
+
+              <path id="riverSpiti" class="map-river-path" d="M 720,110 Q 790,160 840,250" fill="none" stroke="url(#riverGrad)" stroke-width="2" opacity="0.7" />
+              <text x="790" y="190" class="map-label-river" transform="rotate(40 790,190)">~ Spiti River ~</text>
+
+              <!-- Highway Routes with Glowing Dashes -->
+              <path id="routeHindustanTibet" class="map-highway-route" d="M 440,610 L 470,510 L 580,430 L 760,340 L 800,200" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7" />
+              <path id="routeManaliExp" class="map-highway-route" d="M 440,610 L 460,490 L 430,360 L 440,250 L 450,170" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7" />
+              <path id="routeJalori" class="map-highway-route" d="M 470,510 L 500,420 L 430,360" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" opacity="0.6" />
+
+              <!-- Range Rings -->
+              <circle cx="500" cy="350" r="140" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4,8" />
+              <circle cx="500" cy="350" r="260" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,8" />
+
+              <!-- Compass Rose -->
+              <g class="compass-rose" transform="translate(70, 530)">
+                <circle r="30" fill="rgba(7,26,43,0.75)" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+                <polygon points="0,-24 5,-6 0,-10 -5,-6" fill="#38bdf8"/>
+                <polygon points="0,24 5,6 0,10 -5,6" fill="rgba(255,255,255,0.4)"/>
+                <polygon points="24,0 6,5 10,0 6,-5" fill="rgba(255,255,255,0.4)"/>
+                <polygon points="-24,0 -6,5 -10,0 -6,-5" fill="rgba(255,255,255,0.4)"/>
+                <text x="0" y="-28" fill="#38bdf8" font-size="10" font-weight="800" text-anchor="middle">N</text>
+                <text x="32" y="3" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">E</text>
+                <text x="0" y="36" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">S</text>
+                <text x="-32" y="3" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">W</text>
+              </g>
+            </svg>
+
+            <!-- Valley Interactive Pins -->
+            <div class="map-pins-layer">
+              <button class="map-valley-pin pin-spiti is-selected" data-valley="spiti" data-elev="high">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Spiti Valley</span>
+                <span class="pin-alt">3,800m</span>
+              </button>
+              <button class="map-valley-pin pin-manali" data-valley="manali" data-elev="mid">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Manali</span>
+                <span class="pin-alt">2,050m</span>
+              </button>
+              <button class="map-valley-pin pin-kasol" data-valley="kasol" data-elev="mid">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Kasol &amp; Parvati</span>
+                <span class="pin-alt">1,580m</span>
+              </button>
+              <button class="map-valley-pin pin-dharamshala" data-valley="dharamshala" data-elev="mid">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Dharamshala</span>
+                <span class="pin-alt">1,457m</span>
+              </button>
+              <button class="map-valley-pin pin-shimla" data-valley="shimla" data-elev="mid">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Shimla (HQ)</span>
+                <span class="pin-alt">2,276m</span>
+              </button>
+              <button class="map-valley-pin pin-kinnaur" data-valley="kinnaur" data-elev="high">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Kinnaur &amp; Chitkul</span>
+                <span class="pin-alt">3,450m</span>
+              </button>
+              <button class="map-valley-pin pin-bir" data-valley="bir" data-elev="mid">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Bir Billing</span>
+                <span class="pin-alt">2,400m</span>
+              </button>
+              <button class="map-valley-pin pin-tirthan" data-valley="tirthan" data-elev="mid">
+                <span class="pin-dot"></span>
+                <span class="pin-title">Tirthan &amp; Jibhi</span>
+                <span class="pin-alt">1,600m</span>
+              </button>
+            </div>
+
+            <!-- Map Viewport Legend -->
+            <div class="map-viewport-footer">
+              <div class="map-legend-items">
+                <span><i style="background:#f59e0b;"></i> NH-5 Tibet Rd</span>
+                <span><i style="background:#38bdf8;"></i> NH-3 Atal Tunnel</span>
+                <span><i style="background:#06b6d4;"></i> Glacial Rivers</span>
+                <span><i style="background:#10b981;"></i> Jalori Pass Link</span>
+              </div>
+              <div class="map-source-tag">
+                ⌖ Topographic relief calibrated for Himachal terrain
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Dynamic Valley Spotlight Card -->
+          <div class="map-detail-card" id="mapDetailCard">
+            <div class="map-detail-media">
+              <img id="mapDetailPhoto" src="images/landmarks/key_monastery.jpg" alt="Spiti Key Monastery Preview" loading="lazy" decoding="async">
+            </div>
+            <div class="map-detail-body">
+              <span class="section-tag">Valley Spotlight</span>
+              <h3 id="mapDetailTitle" style="font-size:1.6rem; color:#fff;">Spiti Valley &amp; Chandratal</h3>
+              
+              <div class="map-detail-meta">
+                <span class="meta-pill" id="mapDetailAltitude">3,800 m to 4,551 m</span>
+                <span class="meta-pill" id="mapDetailDrive">12 hrs from Chandigarh</span>
+              </div>
+
+              <div class="map-detail-facts">
+                <p><strong>🎯 Famous For:</strong> <span id="mapDetailBestFor" style="color:var(--text-muted);">Lunar desert landscapes, 1000-year Key monastery, billion-star stargazing</span></p>
+                <p><strong>🍲 Local Delicacy:</strong> <span id="mapDetailFood" style="color:var(--text-muted);">Butter tea (Po Cha), Spitian Thukpa &amp; Tingmo</span></p>
+              </div>
+
+              <button class="btn btn-solid btn-block" id="mapDetailCta">
+                Explore Dedicated Valley Package ➔
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+<section class="famous-sites-section container" id="famous-sites">
+      <div class="section-head">
+        <span class="section-tag">Explore By Region</span>
+        <h2>Iconic Mountain Valleys <strong>(Click To View Sites & Activities)</strong></h2>
+        <p>Showing 6 primary Himalayan expedition hubs. Click on any valley card to pop up its dedicated guide featuring authentic site photos, elevations, must-do adventures, and local cuisines.</p>
+      </div>
+
+      <div class="destinations-grid" id="famousSitesContainer">
+        <!-- Top 6 rendered by default, remaining extra circuits hidden until toggle via app.js -->
+      </div>
+
+      <!-- Compact Expand/Collapse Button for Extra Valleys -->
+      <div class="dest-toggle-wrap">
+        <button class="btn btn-outline" id="destToggleBtn" onclick="toggleExtraValleys()">
+          ✦ View All 8+ Himalayan Valleys & Offbeat Circuits (Kinnaur, Bir Billing) ▾
+        </button>
+      </div>
+    </section>
+<section class="packages-section container" id="packages">
+      <div class="section-head">
+        <span class="section-tag">Handpicked Signature Routes</span>
+        <h2>Journeys Designed For <strong>The Soul</strong></h2>
+        <p>From the arid lunar ravines of Spiti to the emerald apple orchards of Kinnaur and misty cedar trails of Manali.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab-btn is-active" data-category="all">All Experiences</button>
+        <button class="filter-tab-btn" data-category="expedition">High Altitude 4x4</button>
+        <button class="filter-tab-btn" data-category="classic">Classic Scenic Escapes</button>
+        <button class="filter-tab-btn" data-category="offbeat">Offbeat Woods & Treks</button>
+        <button class="filter-tab-btn" data-category="honeymoon">Romantic & Luxury</button>
+        <button class="filter-tab-btn" data-category="adventure">Adventure & Aviation</button>
+      </div>
+
+      <!-- Packages Grid -->
+      <div class="packages-grid" id="packagesGrid">
+        <!-- Rendered via app.js -->
+      </div>
+    </section>
+    </div>
+
 
     <!-- ===================================================================
-         5. INTERACTIVE TRIP CUSTOMIZER & INSTANT ESTIMATOR
+         PANEL 3: CABS & FLEET (PORTAL ACCORDING TO BUDGET)
          =================================================================== -->
-    <section class="planner-section" id="planner">
+    <div class="agency-tab-panel" id="tab-cabs">
+<section class="fleet-compact-section container" id="fleet">
+      <div class="fleet-budget-banner">
+        <div class="fleet-budget-info">
+          <span class="section-tag">Mountain Transit Logistics</span>
+          <h2>Book Cab According To <strong>Your Budget &amp; Group Size</strong></h2>
+          <p>Verified native hill chauffeurs, sanitized vehicles with snow chains, and transparent government-aligned per-km rates. From agile Alto 800 for couples to 4x4 Thar and 16-seater group cruisers.</p>
+          
+          <div class="fleet-quick-pills">
+            <button class="fleet-pill" onclick="openFleetModal('alto')">🚗 <strong>Alto 800:</strong> from ₹11/km</button>
+            <button class="fleet-pill" onclick="openFleetModal('sedan')">🚘 <strong>Swift Dzire:</strong> from ₹14/km</button>
+            <button class="fleet-pill" onclick="openFleetModal('suv-innova')">🚙 <strong>Innova Crysta:</strong> from ₹20/km</button>
+            <button class="fleet-pill" onclick="openFleetModal('offroad-thar')">🏔️ <strong>4x4 Thar:</strong> from ₹24/km</button>
+            <button class="fleet-pill" onclick="openFleetModal('tempo-traveller')">🚐 <strong>Tempo Traveller:</strong> from ₹32/km</button>
+          </div>
+        </div>
+
+        <div class="fleet-budget-cta-card">
+          <div class="fleet-cta-header">
+            <span class="fleet-cta-badge">Transparent Rate Guarantee</span>
+            <h3>Explore Mountain Fleet &amp; Rates</h3>
+            <p>Compare seating capacity, mountain handling, boot space &amp; transparent fixed route fares.</p>
+          </div>
+          <button class="btn btn-solid btn-block" onclick="openFleetModal()">
+            View Fleet &amp; Rate Card ➔
+          </button>
+          <button class="btn btn-emerald btn-block" onclick="bookCabWhatsApp('General Inquiry - Cab Booking')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.3-1.2-3.2-2.8-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4L9.3 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.8 2.8 4.5 3.8 2.1.8 2.5.6 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+            Instant WhatsApp Cab Quote
+          </button>
+        </div>
+      </div>
+
+      <!-- Direct Fleet Grid in Tab -->
+      <div style="margin-top:2.5rem;">
+        <h3 style="font-size:1.4rem; margin-bottom:0.5rem;">Dedicated Mountain Fleet (5 Verified Classes)</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;">Hill-certified native chauffeurs equipped with snow chains, commercial state permits, and luggage carriers.</p>
+        <div class="fleet-grid" id="tabFleetGrid">
+          <!-- Rendered via app.js -->
+        </div>
+      </div>
+
+      <!-- Popular Route Taxi Fares Table in Tab -->
+      <div class="route-fare-box" style="margin-top:2.8rem;">
+        <h3 style="font-size:1.3rem; margin-bottom:0.5rem;">Transparent Fixed Route Airport &amp; Intercity Tariffs</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1.5rem;">Fixed all-inclusive fares. Toll taxes, state green permits, and chauffeur allowance included with zero hidden charges.</p>
+        <div style="overflow-x:auto;">
+          <table class="route-table">
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Distance / Time</th>
+                <th>Maruti Alto</th>
+                <th>Sedan (Dzire)</th>
+                <th>Innova Crysta</th>
+                <th>Book Taxi</th>
+              </tr>
+            </thead>
+            <tbody id="tabRouteFaresTableBody">
+              <!-- Rendered via app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    </div>
+
+
+    <!-- ===================================================================
+         PANEL 4: MOUNTAIN STAYS & CHALETS
+         =================================================================== -->
+    <div class="agency-tab-panel" id="tab-stays">
+<section class="mountain-vibes-section" id="vibes">
+      <div class="container">
+        <div class="vibes-compact-banner">
+          <div class="vibes-banner-content">
+            <span class="section-tag">Pure Himalayan Living</span>
+            <h2>Cozy Mountain Stays, <strong>Snow Chalets &amp; Bonfires</strong></h2>
+            <p>From crackling deodar fireplaces and glass stargazing jacuzzis to fresh powder snow drifts and riverside acoustic bonfire parties across Shimla, Manali, Jibhi, and Kasol.</p>
+            <div class="vibes-tag-row">
+              <span class="vibe-chip">🏡 Apple Orchard Homestays</span>
+              <span class="vibe-chip">❄️ Fresh Snow Mountain Chalets</span>
+              <span class="vibe-chip">🔥 Riverside Acoustic Bonfires</span>
+              <span class="vibe-chip">☕ Cozy Heritage Attic Suites</span>
+            </div>
+          </div>
+          <div class="vibes-banner-action">
+            <button class="btn btn-solid" onclick="openStaysModal()">
+              🏡 Browse Curated Mountain Stays &amp; Rooms ➔
+            </button>
+            <button class="btn btn-emerald" onclick="bookCabWhatsApp('Homestay and Mountain Chalet Inquiry')">
+              Inquire on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- Curated Mountain Stays Grid in Tab -->
+        <div style="margin-top:2.5rem;">
+          <div class="section-head" style="margin-bottom:1.5rem; text-align:left;">
+            <span class="section-tag">Handpicked Collection</span>
+            <h2>Browse Stays By <strong>Mountain Vibe</strong></h2>
+            <p>Every homestay, cottage, and chalet is personally inspected for clean heating, scenic mountain views, and authentic hospitality.</p>
+          </div>
+
+          <div class="vibe-filter-tabs" style="margin-bottom:1.8rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <button class="vibe-tab-btn is-active" data-vibe="all">All Stays</button>
+            <button class="vibe-tab-btn" data-vibe="cozy-stays">🏡 Cozy Chalets &amp; Suites</button>
+            <button class="vibe-tab-btn" data-vibe="snow-magic">❄️ Fresh Snow Wonderlands</button>
+            <button class="vibe-tab-btn" data-vibe="parties-nights">🔥 Bonfires &amp; Cafe Nights</button>
+          </div>
+
+          <div class="mountain-vibes-grid" id="tabMountainVibesGrid">
+            <!-- Rendered via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+
+    <!-- ===================================================================
+         PANEL 5: CUSTOM PLAN & BOOKING (ENGINE, CONCIERGE, FAQS, CONTACT)
+         =================================================================== -->
+    <div class="agency-tab-panel" id="tab-booking">
+<section class="planner-section" id="planner">
       <div class="container">
         <div class="section-head">
           <span class="section-tag">Bespoke Experience Engine</span>
@@ -345,278 +959,7 @@
 
       </div>
     </section>
-
-    <!-- ===================================================================
-         6. CURATED JOURNEYS & PACKAGES SHOWCASE
-         =================================================================== -->
-    <section class="packages-section container" id="packages">
-      <div class="section-head">
-        <span class="section-tag">Handpicked Signature Routes</span>
-        <h2>Journeys Designed For <strong>The Soul</strong></h2>
-        <p>From the arid lunar ravines of Spiti to the emerald apple orchards of Kinnaur and misty cedar trails of Manali.</p>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="filter-tabs">
-        <button class="filter-tab-btn is-active" data-category="all">All Experiences</button>
-        <button class="filter-tab-btn" data-category="expedition">High Altitude 4x4</button>
-        <button class="filter-tab-btn" data-category="classic">Classic Scenic Escapes</button>
-        <button class="filter-tab-btn" data-category="offbeat">Offbeat Woods & Treks</button>
-        <button class="filter-tab-btn" data-category="honeymoon">Romantic & Luxury</button>
-        <button class="filter-tab-btn" data-category="adventure">Adventure & Aviation</button>
-      </div>
-
-      <!-- Packages Grid -->
-      <div class="packages-grid" id="packagesGrid">
-        <!-- Rendered via app.js -->
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         6B. ICONIC HIMALAYAN DESTINATIONS (CLICKABLE FOR SITES & ACTIVITIES)
-         =================================================================== -->
-    <!-- ===================================================================
-         6B. ICONIC HIMALAYAN DESTINATIONS (TOP 6 MAJOR + EXPANDABLE)
-         =================================================================== -->
-    <section class="famous-sites-section container" id="famous-sites">
-      <div class="section-head">
-        <span class="section-tag">Explore By Region</span>
-        <h2>Iconic Mountain Valleys <strong>(Click To View Sites & Activities)</strong></h2>
-        <p>Showing 6 primary Himalayan expedition hubs. Click on any valley card to pop up its dedicated guide featuring authentic site photos, elevations, must-do adventures, and local cuisines.</p>
-      </div>
-
-      <div class="destinations-grid" id="famousSitesContainer">
-        <!-- Top 6 rendered by default, remaining extra circuits hidden until toggle via app.js -->
-      </div>
-
-      <!-- Compact Expand/Collapse Button for Extra Valleys -->
-      <div class="dest-toggle-wrap">
-        <button class="btn btn-outline" id="destToggleBtn" onclick="toggleExtraValleys()">
-          ✦ View All 8+ Himalayan Valleys & Offbeat Circuits (Kinnaur, Bir Billing) ▾
-        </button>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         6C. COMPACT MOUNTAIN STAYS & CHALETS (SINGLE LUXURY CARD TRIGGER)
-         =================================================================== -->
-    <section class="mountain-vibes-section" id="vibes">
-      <div class="container">
-        <div class="vibes-compact-banner">
-          <div class="vibes-banner-content">
-            <span class="section-tag">Pure Himalayan Living</span>
-            <h2>Cozy Mountain Stays, <strong>Snow Chalets & Bonfires</strong></h2>
-            <p>From crackling deodar fireplaces and glass stargazing jacuzzis to fresh powder snow drifts and riverside acoustic bonfire parties across Shimla, Manali, Jibhi, and Kasol.</p>
-            <div class="vibes-tag-row">
-              <span class="vibe-chip">🏡 Apple Orchard Homestays</span>
-              <span class="vibe-chip">❄️ Fresh Snow Mountain Chalets</span>
-              <span class="vibe-chip">🔥 Riverside Acoustic Bonfires</span>
-              <span class="vibe-chip">☕ Cozy Heritage Attic Suites</span>
-            </div>
-          </div>
-          <div class="vibes-banner-action">
-            <button class="btn btn-solid" onclick="openStaysModal()">
-              🏡 Browse Curated Mountain Stays & Rooms ➔
-            </button>
-            <button class="btn btn-emerald" onclick="bookCabWhatsApp('Homestay and Mountain Chalet Inquiry')">
-              Inquire on WhatsApp
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         7. CREATIVE TOPOGRAPHIC HIMALAYAN VALLEY MAP & RADAR
-         =================================================================== -->
-    <section class="map-visualizer-section" id="valley-map">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Topographical Navigator</span>
-          <h2>Explore Himachal by <strong>Altitude & Mountain Passes</strong></h2>
-          <p>Interactive topographic relief map displaying major Himalayan river systems, snow peaks, and national highway arteries. Click on any valley pin to inspect elevation, travel time, and routes.</p>
-        </div>
-
-        <div class="map-visualizer-layout">
-          <!-- Left: Mountain Map with Interactive Topography & Pins -->
-          <div class="map-viewport">
-            <!-- Map Top Bar Controls -->
-            <div class="map-top-bar">
-              <div class="map-badge-group">
-                <span class="map-live-tag"><span class="pulse-dot"></span> HIMALAYAN RADAR</span>
-                <span class="map-coords-tag">LAT 31.10° N • ELEV 1,457m - 4,551m</span>
-              </div>
-              <div class="map-filter-pills">
-                <button class="map-filter-btn is-active" data-filter="all" onclick="filterMapElevations('all')">All Valleys</button>
-                <button class="map-filter-btn" data-filter="high" onclick="filterMapElevations('high')">High Pass (3000m+)</button>
-                <button class="map-filter-btn" data-filter="mid" onclick="filterMapElevations('mid')">Valleys (&lt;2500m)</button>
-              </div>
-            </div>
-
-            <!-- Topographic Relief SVG with Snow Peaks & Rivers -->
-            <svg class="map-svg-canvas" viewBox="0 0 1000 650" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#38bdf8"/>
-                  <stop offset="100%" stop-color="#06b6d4"/>
-                </linearGradient>
-                <linearGradient id="snowPeakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#ffffff"/>
-                  <stop offset="50%" stop-color="#e0f2fe"/>
-                  <stop offset="100%" stop-color="#0284c7" stop-opacity="0.2"/>
-                </linearGradient>
-              </defs>
-
-              <!-- Topographic Elevation Contour Lines -->
-              <path class="topo-contour" d="M 0,220 C 180,180 320,320 520,240 C 720,160 850,280 1000,210" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="1.5" />
-              <path class="topo-contour" d="M 0,310 C 220,260 400,390 620,300 C 800,220 900,330 1000,290" fill="none" stroke="rgba(56,189,248,0.2)" stroke-width="1.2" />
-              <path class="topo-contour" d="M 0,420 C 250,380 450,490 700,410 C 850,350 940,430 1000,390" fill="none" stroke="rgba(56,189,248,0.15)" stroke-width="1" />
-              <path class="topo-contour" d="M 0,520 C 280,480 500,560 760,490 C 890,440 960,510 1000,480" fill="none" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
-
-              <!-- Snow Peaks -->
-              <polygon points="860,250 890,140 920,250" fill="url(#snowPeakGrad)" opacity="0.45" />
-              <polygon points="880,175 890,140 900,175" fill="#ffffff" opacity="0.95" />
-              <text x="890" y="130" class="map-label-peak" text-anchor="middle">▲ Kinner Kailash 6,050m</text>
-
-              <polygon points="730,190 770,90 810,190" fill="url(#snowPeakGrad)" opacity="0.5" />
-              <polygon points="755,125 770,90 785,125" fill="#ffffff" opacity="0.95" />
-              <text x="770" y="80" class="map-label-peak" text-anchor="middle">▲ Kunzum Pass 4,551m</text>
-
-              <polygon points="410,230 450,130 490,230" fill="url(#snowPeakGrad)" opacity="0.45" />
-              <polygon points="435,165 450,130 465,165" fill="#ffffff" opacity="0.9" />
-              <text x="450" y="120" class="map-label-peak" text-anchor="middle">▲ Rohtang Glacier 3,978m</text>
-
-              <polygon points="130,220 170,120 210,220" fill="url(#snowPeakGrad)" opacity="0.4" />
-              <polygon points="155,155 170,120 185,155" fill="#ffffff" opacity="0.9" />
-              <text x="170" y="110" class="map-label-peak" text-anchor="middle">▲ Dhauladhar Crest 3,800m</text>
-
-              <!-- Glacial River Channels -->
-              <path id="riverBeas" class="map-river-path" d="M 460,140 Q 440,240 420,320 T 320,440 T 150,560" fill="none" stroke="url(#riverGrad)" stroke-width="2.5" opacity="0.65" />
-              <text x="340" y="400" class="map-label-river" transform="rotate(-30 340,400)">~ Beas River ~</text>
-
-              <path id="riverSatluj" class="map-river-path" d="M 940,240 Q 820,320 680,410 T 520,490 T 360,590" fill="none" stroke="url(#riverGrad)" stroke-width="3" opacity="0.65" />
-              <text x="660" y="440" class="map-label-river" transform="rotate(-15 660,440)">~ Satluj River ~</text>
-
-              <path id="riverParvati" class="map-river-path" d="M 640,260 Q 560,310 440,320" fill="none" stroke="url(#riverGrad)" stroke-width="2" opacity="0.75" />
-              <text x="540" y="300" class="map-label-river">~ Parvati River ~</text>
-
-              <path id="riverSpiti" class="map-river-path" d="M 720,110 Q 790,160 840,250" fill="none" stroke="url(#riverGrad)" stroke-width="2" opacity="0.7" />
-              <text x="790" y="190" class="map-label-river" transform="rotate(40 790,190)">~ Spiti River ~</text>
-
-              <!-- Highway Routes with Glowing Dashes -->
-              <path id="routeHindustanTibet" class="map-highway-route" d="M 440,610 L 470,510 L 580,430 L 760,340 L 800,200" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7" />
-              <path id="routeManaliExp" class="map-highway-route" d="M 440,610 L 460,490 L 430,360 L 440,250 L 450,170" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7" />
-              <path id="routeJalori" class="map-highway-route" d="M 470,510 L 500,420 L 430,360" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" opacity="0.6" />
-
-              <!-- Range Rings -->
-              <circle cx="500" cy="350" r="140" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4,8" />
-              <circle cx="500" cy="350" r="260" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,8" />
-
-              <!-- Compass Rose -->
-              <g class="compass-rose" transform="translate(70, 530)">
-                <circle r="30" fill="rgba(7,26,43,0.75)" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
-                <polygon points="0,-24 5,-6 0,-10 -5,-6" fill="#38bdf8"/>
-                <polygon points="0,24 5,6 0,10 -5,6" fill="rgba(255,255,255,0.4)"/>
-                <polygon points="24,0 6,5 10,0 6,-5" fill="rgba(255,255,255,0.4)"/>
-                <polygon points="-24,0 -6,5 -10,0 -6,-5" fill="rgba(255,255,255,0.4)"/>
-                <text x="0" y="-28" fill="#38bdf8" font-size="10" font-weight="800" text-anchor="middle">N</text>
-                <text x="32" y="3" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">E</text>
-                <text x="0" y="36" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">S</text>
-                <text x="-32" y="3" fill="rgba(255,255,255,0.6)" font-size="8" text-anchor="middle">W</text>
-              </g>
-            </svg>
-
-            <!-- Valley Interactive Pins -->
-            <div class="map-pins-layer">
-              <button class="map-valley-pin pin-spiti is-selected" data-valley="spiti" data-elev="high">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Spiti Valley</span>
-                <span class="pin-alt">3,800m</span>
-              </button>
-              <button class="map-valley-pin pin-manali" data-valley="manali" data-elev="mid">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Manali</span>
-                <span class="pin-alt">2,050m</span>
-              </button>
-              <button class="map-valley-pin pin-kasol" data-valley="kasol" data-elev="mid">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Kasol &amp; Parvati</span>
-                <span class="pin-alt">1,580m</span>
-              </button>
-              <button class="map-valley-pin pin-dharamshala" data-valley="dharamshala" data-elev="mid">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Dharamshala</span>
-                <span class="pin-alt">1,457m</span>
-              </button>
-              <button class="map-valley-pin pin-shimla" data-valley="shimla" data-elev="mid">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Shimla (HQ)</span>
-                <span class="pin-alt">2,276m</span>
-              </button>
-              <button class="map-valley-pin pin-kinnaur" data-valley="kinnaur" data-elev="high">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Kinnaur &amp; Chitkul</span>
-                <span class="pin-alt">3,450m</span>
-              </button>
-              <button class="map-valley-pin pin-bir" data-valley="bir" data-elev="mid">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Bir Billing</span>
-                <span class="pin-alt">2,400m</span>
-              </button>
-              <button class="map-valley-pin pin-tirthan" data-valley="tirthan" data-elev="mid">
-                <span class="pin-dot"></span>
-                <span class="pin-title">Tirthan &amp; Jibhi</span>
-                <span class="pin-alt">1,600m</span>
-              </button>
-            </div>
-
-            <!-- Map Viewport Legend -->
-            <div class="map-viewport-footer">
-              <div class="map-legend-items">
-                <span><i style="background:#f59e0b;"></i> NH-5 Tibet Rd</span>
-                <span><i style="background:#38bdf8;"></i> NH-3 Atal Tunnel</span>
-                <span><i style="background:#06b6d4;"></i> Glacial Rivers</span>
-                <span><i style="background:#10b981;"></i> Jalori Pass Link</span>
-              </div>
-              <div class="map-source-tag">
-                ⌖ Topographic relief calibrated for Himachal terrain
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Dynamic Valley Spotlight Card -->
-          <div class="map-detail-card" id="mapDetailCard">
-            <div class="map-detail-media">
-              <img id="mapDetailPhoto" src="images/landmarks/key_monastery.jpg" alt="Spiti Key Monastery Preview" loading="lazy" decoding="async">
-            </div>
-            <div class="map-detail-body">
-              <span class="section-tag">Valley Spotlight</span>
-              <h3 id="mapDetailTitle" style="font-size:1.6rem; color:#fff;">Spiti Valley &amp; Chandratal</h3>
-              
-              <div class="map-detail-meta">
-                <span class="meta-pill" id="mapDetailAltitude">3,800 m to 4,551 m</span>
-                <span class="meta-pill" id="mapDetailDrive">12 hrs from Chandigarh</span>
-              </div>
-
-              <div class="map-detail-facts">
-                <p><strong>🎯 Famous For:</strong> <span id="mapDetailBestFor" style="color:var(--text-muted);">Lunar desert landscapes, 1000-year Key monastery, billion-star stargazing</span></p>
-                <p><strong>🍲 Local Delicacy:</strong> <span id="mapDetailFood" style="color:var(--text-muted);">Butter tea (Po Cha), Spitian Thukpa &amp; Tingmo</span></p>
-              </div>
-
-              <button class="btn btn-solid btn-block" id="mapDetailCta">
-                Explore Dedicated Valley Package ➔
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         8. INTERNATIONAL TRAVELERS CONCIERGE (Global Explorers)
-         =================================================================== -->
-    <section class="international-section" id="international">
+<section class="international-section" id="international">
       <div class="container">
         <div class="section-head">
           <span class="section-tag">Global Explorer Services</span>
@@ -663,84 +1006,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ===================================================================
-         9. COMPACT DEDICATED HIMACHAL CAB & 4X4 BUDGET CARD
-         =================================================================== -->
-    <section class="fleet-compact-section container" id="fleet">
-      <div class="fleet-budget-banner">
-        <div class="fleet-budget-info">
-          <span class="section-tag">Mountain Transit Logistics</span>
-          <h2>Book Cab According To <strong>Your Budget &amp; Group Size</strong></h2>
-          <p>Verified native hill chauffeurs, sanitized vehicles with snow chains, and transparent government-aligned per-km rates. From agile Alto 800 for couples to 4x4 Thar and 16-seater group cruisers.</p>
-          
-          <div class="fleet-quick-pills">
-            <button class="fleet-pill" onclick="openFleetModal('alto')">🚗 <strong>Alto 800:</strong> from ₹11/km</button>
-            <button class="fleet-pill" onclick="openFleetModal('sedan')">🚘 <strong>Swift Dzire:</strong> from ₹14/km</button>
-            <button class="fleet-pill" onclick="openFleetModal('suv-innova')">🚙 <strong>Innova Crysta:</strong> from ₹20/km</button>
-            <button class="fleet-pill" onclick="openFleetModal('offroad-thar')">🏔️ <strong>4x4 Thar:</strong> from ₹24/km</button>
-            <button class="fleet-pill" onclick="openFleetModal('tempo-traveller')">🚐 <strong>Tempo Traveller:</strong> from ₹32/km</button>
-          </div>
-        </div>
-
-        <div class="fleet-budget-cta-card">
-          <div class="fleet-cta-header">
-            <span class="fleet-cta-badge">Transparent Rate Guarantee</span>
-            <h3>Explore Mountain Fleet &amp; Rates</h3>
-            <p>Compare seating capacity, mountain handling, boot space &amp; transparent fixed route fares.</p>
-          </div>
-          <button class="btn btn-solid btn-block" onclick="openFleetModal()">
-            View Fleet &amp; Rate Card ➔
-          </button>
-          <button class="btn btn-emerald btn-block" onclick="bookCabWhatsApp('General Inquiry - Cab Booking')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.3-1.2-3.2-2.8-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4L9.3 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.8 2.8 4.5 3.8 2.1.8 2.5.6 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
-            Instant WhatsApp Cab Quote
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         10. STATS & VERIFIED REVIEWS
-         =================================================================== -->
-    <section class="stats-strip">
-      <div class="container stats-grid">
-        <div class="stat-item">
-          <span class="stat-number" data-target="7">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Years of Mountain Expeditions</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="3800">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Happy Explorers Escorted</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="32">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">High Valleys & Villages Reached</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="4.95">0</span><span class="stat-suffix">/5</span>
-          <span class="stat-label">Average Traveler Rating</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials-section container" id="reviews">
-      <div class="section-head">
-        <span class="section-tag">Word from Wanderers</span>
-        <h2>Stories From The <strong>High Passes</strong></h2>
-        <p>Read unfiltered experiences from travelers across Sweden, Australia, Germany, and India who traversed the mountains with Himora.</p>
-      </div>
-
-      <div class="testi-stage" id="testiCardsContainer">
-        <!-- Rendered via app.js -->
-      </div>
-      <div class="testi-dots" id="testiDotsContainer"></div>
-    </section>
-
-    <!-- ===================================================================
-         11. COMPREHENSIVE TRAVEL FAQS
-         =================================================================== -->
-    <section class="faqs-section container" id="faqs">
+<section class="faqs-section container" id="faqs">
       <div class="section-head">
         <span class="section-tag">Clarity & Confidence</span>
         <h2>Frequently Asked <strong>Mountain Questions</strong></h2>
@@ -751,11 +1017,7 @@
         <!-- Rendered via app.js -->
       </div>
     </section>
-
-    <!-- ===================================================================
-         12. CONTACT & LEAD CAPTURE
-         =================================================================== -->
-    <section class="contact-section" id="contact">
+<section class="contact-section" id="contact">
       <div class="container">
         <div class="contact-box">
           <span class="section-tag">Shimla Mountain Office</span>
@@ -781,6 +1043,8 @@
         </div>
       </div>
     </section>
+    </div>
+
 
   </main>
 

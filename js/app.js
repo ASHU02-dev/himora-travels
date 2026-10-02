@@ -26,6 +26,10 @@ function initApp() {
   setupCounters();
   setupCabFareCalculator();
   setupThemeToggle();
+  setupTabNavigation();
+  initAutoShowcase();
+  setupHeroVideo();
+  setupQuickBookingStrip();
   
   if (window.initValleyMap) {
     window.initValleyMap();
@@ -297,6 +301,7 @@ function setupModalHandlers() {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closePackageModal();
     });
+  }
   // Fleet modal
   const fleetModal = document.getElementById('fleetModal');
   const fleetCloseBtn = document.getElementById('fleetModalCloseBtn');
@@ -528,13 +533,14 @@ window.currentVibeFilter = 'all';
 function renderMountainVibes(category = 'all') {
   window.currentVibeFilter = category;
   const container = document.getElementById('mountainVibesGrid');
-  if (!container) return;
+  const tabContainer = document.getElementById('tabMountainVibesGrid');
+  if (!container && !tabContainer) return;
 
   const filtered = category === 'all'
     ? HIMORA_DATA.mountainVibes
     : HIMORA_DATA.mountainVibes.filter(v => v.category === category);
 
-  container.innerHTML = filtered.map(vibe => `
+  const cardsHtml = filtered.map(vibe => `
     <div class="vibe-card">
       <div class="vibe-card-media">
         <img src="${vibe.image}" alt="${vibe.title}" loading="lazy">
@@ -549,14 +555,18 @@ function renderMountainVibes(category = 'all') {
       </div>
     </div>
   `).join('');
+
+  if (container) container.innerHTML = cardsHtml;
+  if (tabContainer) tabContainer.innerHTML = cardsHtml;
 }
 
 function setupVibeFilters() {
   document.querySelectorAll('.vibe-tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      const vibe = btn.dataset.vibe;
       document.querySelectorAll('.vibe-tab-btn').forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      renderMountainVibes(btn.dataset.vibe);
+      document.querySelectorAll(`.vibe-tab-btn[data-vibe="${vibe}"]`).forEach(b => b.classList.add('is-active'));
+      renderMountainVibes(vibe);
     });
   });
 }
@@ -573,10 +583,11 @@ Please recommend hotels, itineraries, or private tour options for this vibe.`;
 // ----------------------------------------------------------------
 function renderFleet() {
   const container = document.getElementById('fleetGrid');
-  if (!container) return;
+  const tabContainer = document.getElementById('tabFleetGrid');
+  if (!container && !tabContainer) return;
 
-  container.innerHTML = HIMORA_DATA.cabs.map(cab => `
-    <div class="cab-card">
+  const cardsHtml = HIMORA_DATA.cabs.map(cab => `
+    <div class="cab-card" data-cab="${cab.id}">
       <div class="cab-card-img">
         <img src="${cab.image}" alt="${cab.name}" loading="lazy" decoding="async">
         <span class="cab-badge">${cab.badge}</span>
@@ -601,6 +612,9 @@ function renderFleet() {
       </div>
     </div>
   `).join('');
+
+  if (container) container.innerHTML = cardsHtml;
+  if (tabContainer) tabContainer.innerHTML = cardsHtml;
 
   updateTaxiRouteFares();
 }
@@ -645,9 +659,10 @@ function setupCabFareCalculator() {
 
 function updateTaxiRouteFares() {
   const tableBody = document.getElementById('routeFaresTableBody');
-  if (!tableBody) return;
+  const tabTableBody = document.getElementById('tabRouteFaresTableBody');
+  if (!tableBody && !tabTableBody) return;
 
-  tableBody.innerHTML = HIMORA_DATA.taxiRoutes.map(r => `
+  const rowsHtml = HIMORA_DATA.taxiRoutes.map(r => `
     <tr>
       <td><strong>${r.from}</strong> ➔ ${r.to}</td>
       <td>${r.distance}</td>
@@ -659,6 +674,9 @@ function updateTaxiRouteFares() {
       </td>
     </tr>
   `).join('');
+
+  if (tableBody) tableBody.innerHTML = rowsHtml;
+  if (tabTableBody) tabTableBody.innerHTML = rowsHtml;
 }
 
 function bookCabWhatsApp(cabName) {
@@ -836,4 +854,370 @@ window.closeFleetModal = closeFleetModal;
 window.openStaysModal = openStaysModal;
 window.closeStaysModal = closeStaysModal;
 window.toggleExtraValleys = toggleExtraValleys;
+
+// ================================================================
+// 7. AGENCY TAB NAVIGATION ARCHITECTURE (CLEAN & NON-LENGTHY)
+// ================================================================
+window.currentTab = 'tab-home';
+
+function setupTabNavigation() {
+  const tabBtns = document.querySelectorAll('.agency-tab-btn');
+  const tabPanels = document.querySelectorAll('.agency-tab-panel');
+
+  if (!tabBtns.length || !tabPanels.length) return;
+
+  function switchTab(targetId, updateHash = true, smoothScroll = false) {
+    let cleanId = targetId.startsWith('tab-') ? targetId : `tab-${targetId}`;
+    if (cleanId === 'tab-fleet') cleanId = 'tab-cabs';
+    if (cleanId === 'tab-homestays') cleanId = 'tab-stays';
+    if (cleanId === 'tab-planner') cleanId = 'tab-booking';
+
+    const targetPanel = document.getElementById(cleanId);
+    if (!targetPanel) return;
+
+    window.currentTab = cleanId;
+
+    // Update buttons
+    tabBtns.forEach(btn => {
+      const isMatch = btn.dataset.tab === cleanId;
+      btn.classList.toggle('is-active', isMatch);
+      btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
+
+    // Update panels
+    tabPanels.forEach(panel => {
+      panel.classList.toggle('is-active', panel.id === cleanId);
+    });
+
+    // Update URL hash
+    if (updateHash) {
+      const hashName = cleanId.replace('tab-', '');
+      if (window.location.hash !== `#${hashName}`) {
+        history.replaceState(null, '', `#${hashName}`);
+      }
+    }
+
+    // Scroll to top of tab container
+    if (smoothScroll) {
+      const tabAnchor = document.getElementById('agencyTabBar');
+      if (tabAnchor) {
+        const topOffset = tabAnchor.getBoundingClientRect().top + window.pageYOffset - 75;
+        window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      }
+    }
+
+    // Trigger map redraw if switching to Explore
+    if (cleanId === 'tab-explore' && window.initValleyMap) {
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 50);
+    }
+  }
+
+  window.switchTab = (id, scroll = true) => switchTab(id, true, scroll);
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchTab(btn.dataset.tab, true, false);
+    });
+  });
+
+  // Global handler for clicks on elements with data-switch-tab
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-switch-tab]');
+    if (trigger) {
+      e.preventDefault();
+      const tabName = trigger.dataset.switchTab;
+      switchTab(tabName, true, true);
+    }
+  });
+
+  // Check URL hash on initial load
+  const initialHash = window.location.hash.replace('#', '').toLowerCase();
+  const validTabs = ['home', 'explore', 'cabs', 'fleet', 'stays', 'homestays', 'booking', 'planner'];
+  if (initialHash && validTabs.includes(initialHash)) {
+    switchTab(initialHash, false, false);
+  } else {
+    switchTab('tab-home', false, false);
+  }
+
+  // Handle browser navigation
+  window.addEventListener('hashchange', () => {
+    const newHash = window.location.hash.replace('#', '').toLowerCase();
+    if (newHash && validTabs.includes(newHash)) {
+      switchTab(newHash, false, false);
+    }
+  });
+}
+
+// ================================================================
+// 8. AUTO-CHANGING LOCATION SHOWCASE (ADVENTURES & FAMOUS FOOD)
+// ================================================================
+const showcaseItems = [
+  {
+    id: "manali",
+    valleyName: "Manali & Solang Valley",
+    tagline: "High Snow Glaciers, Rohtang Pass & Bohemian Riverside Cafes",
+    altitude: "2,050m - 3,978m",
+    season: "Year-Round (Dec-Feb for Heavy Snow)",
+    image: "images/landmarks/solang.jpg",
+    adventures: "Snow Skiing at Solang, Rohtang Snowmobiling, Tandem Paragliding, Beas River Rafting, ATV Quad Biking",
+    food: "Authentic Himachali Siddu with hot pure ghee, Wood-smoked Beas river trout, Bohemian cafes in Old Manali",
+    drive: "7 hrs from Chandigarh via NH-3 Expressway • Swift Dzire or Innova Crysta",
+    packageId: "manali-solang-alpine"
+  },
+  {
+    id: "spiti",
+    valleyName: "Spiti Valley & Chandratal",
+    tagline: "Lunar Deserts, Millennial Monasteries & Highest Inhabited Villages",
+    altitude: "3,800m - 4,551m",
+    season: "May to October (Summer) | Jan-Feb (Winter 4x4)",
+    image: "images/landmarks/key_monastery.jpg",
+    adventures: "Chandratal Galaxy Dome Camping, Kunzum Pass 4x4 Crossing, Chicham Bridge Walk, Marine Fossil Trail in Langza",
+    food: "Spitian Butter Tea (Po Cha), Steamed Tingmo with rich vegetable/mutton broth, Seabuckthorn herbal tea",
+    drive: "12 hrs circuit via Kinnaur / Atal Tunnel • Mahindra Thar 4x4 or Innova Crysta",
+    packageId: "spiti-circuit"
+  },
+  {
+    id: "shimla",
+    valleyName: "Shimla & Kufri (Himora HQ)",
+    tagline: "British Colonial Heritage, Jakhoo Ridge & Pine-Covered Slopes",
+    altitude: "2,276m - 2,622m",
+    season: "All Year (Snow in Jan, Cool Summers)",
+    image: "images/landmarks/ridge_church.jpg",
+    adventures: "Kufri Snow Sledging & Skiing, Jakhoo Aerial Ropeway, Heritage Mall Road Walk, Mashobra Apple Trails",
+    food: "Himachali Madra & Chha Gosht, Kurkure Siddu, Wood-fired artisan pizza at historic Mall Road cafes",
+    drive: "3.5 hrs from Chandigarh via Himalayan Expressway • Maruti Alto 800 or Swift Dzire",
+    packageId: "shimla-colonial-heritage"
+  },
+  {
+    id: "kasol",
+    valleyName: "Kasol & Parvati Valley",
+    tagline: "Gushing Turquoise Rivers, Thermal Hot Springs & Mystic Cedar Woods",
+    altitude: "1,580m - 2,960m",
+    season: "March to June | September to November",
+    image: "images/landmarks/parvati_kasol.jpg",
+    adventures: "Kheerganga Natural Thermal Sulfur Springs Trek, Tosh Cliffside Hike, Chalal Riverside Strolls, Manikaran Sahib",
+    food: "Israeli Shakshuka & Hummus with fresh pita, Parvati River trout, Cinnamon babka & warm apple pies",
+    drive: "6.5 hrs from Chandigarh • Swift Dzire or Innova Crysta",
+    packageId: "kasol-kheerganga-magic"
+  },
+  {
+    id: "dharamshala",
+    valleyName: "Dharamshala & Bir Billing",
+    tagline: "World Championship Paragliding, Dalai Lama Residence & Triund",
+    altitude: "1,457m - 2,400m",
+    season: "Sep-Nov (Best Paragliding Thermals) | Mar-Jun",
+    image: "images/landmarks/bir.jpg",
+    adventures: "Tandem Paragliding Flight from 2,400m Billing Takeoff, Triund Sunset Meadow Trek, Norbulingka Institute Art Tour",
+    food: "Steamed Tibetan Momos, Traditional Thukpa soup, Freshly brewed Kangra orthodox green tea, Bhagsu Cake",
+    drive: "5.5 hrs from Chandigarh • Swift Dzire or Innova Crysta",
+    packageId: "bir-billing-paragliding"
+  },
+  {
+    id: "tirthan",
+    valleyName: "Tirthan Valley & Jibhi",
+    tagline: "Pristine Trout Streams, UNESCO Great Himalayan National Park & Treehouses",
+    altitude: "1,600m - 3,120m",
+    season: "All Year (Crisp Forest Summers, Snow Nov-Feb)",
+    image: "images/landmarks/jibhi_waterfall.jpg",
+    adventures: "Serolsar Lake Trek via Jalori Pass (3,120m), GHNP UNESCO Buffer Zone Hiking, Jibhi Waterfall Walk, Chehni Kothi",
+    food: "Pan-seared Himalayan Brown Trout, Authentic Kulvi Siddu with walnut filling, Organic mountain honey tea",
+    drive: "6 hrs from Chandigarh via Aut Tunnel • Swift Dzire or 4x4 Thar",
+    packageId: "tirthan-jibhi-secret"
+  }
+];
+
+let currentShowcaseIdx = 0;
+let showcaseTimer = null;
+const SHOWCASE_DURATION = 4500;
+
+function initAutoShowcase() {
+  const container = document.getElementById('agencyShowcaseContainer');
+  if (!container) return;
+
+  renderShowcaseSlide(0);
+  startShowcaseTimer();
+
+  const prevBtn = document.getElementById('showcasePrevBtn');
+  const nextBtn = document.getElementById('showcaseNextBtn');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      stopShowcaseTimer();
+      currentShowcaseIdx = (currentShowcaseIdx - 1 + showcaseItems.length) % showcaseItems.length;
+      renderShowcaseSlide(currentShowcaseIdx);
+      startShowcaseTimer();
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      stopShowcaseTimer();
+      currentShowcaseIdx = (currentShowcaseIdx + 1) % showcaseItems.length;
+      renderShowcaseSlide(currentShowcaseIdx);
+      startShowcaseTimer();
+    });
+  }
+
+  container.addEventListener('mouseenter', stopShowcaseTimer);
+  container.addEventListener('mouseleave', startShowcaseTimer);
+  container.addEventListener('touchstart', stopShowcaseTimer, { passive: true });
+}
+
+function renderShowcaseSlide(idx) {
+  const item = showcaseItems[idx];
+  if (!item) return;
+
+  const imgEl = document.getElementById('showcaseImg');
+  const altEl = document.getElementById('showcaseAlt');
+  const capTitle = document.getElementById('showcaseCapTitle');
+  const capSub = document.getElementById('showcaseCapSub');
+  const titleEl = document.getElementById('showcaseTitle');
+  const taglineEl = document.getElementById('showcaseTagline');
+  const advText = document.getElementById('showcaseAdvText');
+  const foodText = document.getElementById('showcaseFoodText');
+  const driveText = document.getElementById('showcaseDriveText');
+  const counterEl = document.getElementById('showcaseCounter');
+  const detailsBtn = document.getElementById('showcaseDetailsBtn');
+  const bookCabBtn = document.getElementById('showcaseBookCabBtn');
+
+  if (imgEl) {
+    imgEl.style.opacity = '0.4';
+    setTimeout(() => {
+      imgEl.src = item.image;
+      imgEl.alt = item.valleyName;
+      imgEl.style.opacity = '1';
+    }, 120);
+  }
+
+  if (altEl) altEl.textContent = `▲ ${item.altitude}`;
+  if (capTitle) capTitle.textContent = item.valleyName;
+  if (capSub) capSub.textContent = item.season;
+  if (titleEl) titleEl.textContent = item.valleyName;
+  if (taglineEl) taglineEl.textContent = item.tagline;
+  if (advText) advText.textContent = item.adventures;
+  if (foodText) foodText.textContent = item.food;
+  if (driveText) driveText.textContent = item.drive;
+  if (counterEl) counterEl.textContent = `0${idx + 1} / 0${showcaseItems.length}`;
+
+  if (detailsBtn) {
+    detailsBtn.onclick = () => {
+      if (window.openValleyModal) {
+        window.openValleyModal(item.id);
+      }
+    };
+  }
+
+  if (bookCabBtn) {
+    bookCabBtn.onclick = () => {
+      if (window.switchTab) {
+        window.switchTab('cabs', true);
+      }
+    };
+  }
+
+  // Dots
+  const dots = document.querySelectorAll('.showcase-dot');
+  dots.forEach((dot, dIdx) => {
+    dot.classList.toggle('is-active', dIdx === idx);
+  });
+
+  // Progress Bar
+  const progBar = document.getElementById('showcaseProgressBar');
+  if (progBar) {
+    progBar.style.transition = 'none';
+    progBar.style.width = '0%';
+    setTimeout(() => {
+      progBar.style.transition = `width ${SHOWCASE_DURATION}ms linear`;
+      progBar.style.width = '100%';
+    }, 20);
+  }
+}
+
+function startShowcaseTimer() {
+  stopShowcaseTimer();
+  const progBar = document.getElementById('showcaseProgressBar');
+  if (progBar) {
+    progBar.style.transition = `width ${SHOWCASE_DURATION}ms linear`;
+    progBar.style.width = '100%';
+  }
+  showcaseTimer = setTimeout(() => {
+    currentShowcaseIdx = (currentShowcaseIdx + 1) % showcaseItems.length;
+    renderShowcaseSlide(currentShowcaseIdx);
+    startShowcaseTimer();
+  }, SHOWCASE_DURATION);
+}
+
+function stopShowcaseTimer() {
+  if (showcaseTimer) {
+    clearTimeout(showcaseTimer);
+    showcaseTimer = null;
+  }
+  const progBar = document.getElementById('showcaseProgressBar');
+  if (progBar) {
+    progBar.style.transition = 'none';
+  }
+}
+
+function selectShowcaseSlide(idx) {
+  stopShowcaseTimer();
+  currentShowcaseIdx = idx;
+  renderShowcaseSlide(currentShowcaseIdx);
+  startShowcaseTimer();
+}
+window.selectShowcaseSlide = selectShowcaseSlide;
+
+// ================================================================
+// 9. REAL HERO VIDEO CONTROLS
+// ================================================================
+function setupHeroVideo() {
+  const video = document.getElementById('heroVideo');
+  const toggleBtn = document.getElementById('heroVideoToggle');
+  if (!video || !toggleBtn) return;
+
+  toggleBtn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play().catch(e => console.log('Autoplay blocked:', e));
+      toggleBtn.innerHTML = '⏸';
+      toggleBtn.setAttribute('title', 'Pause Himalayan Snow Drive Video');
+    } else {
+      video.pause();
+      toggleBtn.innerHTML = '▶';
+      toggleBtn.setAttribute('title', 'Play Himalayan Snow Drive Video');
+    }
+  });
+
+  // Attempt autoplay
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // Autoplay prevented by browser, fallback poster already active
+    });
+  }
+}
+
+// ================================================================
+// 10. QUICK BOOKING STRIP HANDLER
+// ================================================================
+function setupQuickBookingStrip() {
+  const pickupEl = document.getElementById('stripPickup');
+  const destEl = document.getElementById('stripDest');
+  const serviceEl = document.getElementById('stripService');
+  const btn = document.getElementById('stripSubmitBtn');
+  if (!btn || !pickupEl || !destEl || !serviceEl) return;
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const from = pickupEl.value;
+    const to = destEl.value;
+    const srv = serviceEl.value;
+
+    const msg = `🏔️ *Himora Travels — Quick Inquiry*
+• Departure / Pickup: ${from}
+• Destination: ${to}
+• Service Needed: ${srv}
+Please provide recommended vehicle options, best route, and package quote.`;
+    window.open(`https://wa.me/${HIMORA_DATA.brand.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+}
+
 
