@@ -432,7 +432,7 @@ function toggleExtraValleys() {
   if (btn) {
     btn.innerHTML = extraValleysExpanded 
       ? '✦ Show Major 6 Valleys ▴' 
-      : '✦ View All 8+ Himalayan Valleys &amp; Offbeat Circuits (Kinnaur, Bir Billing) ▾';
+      : '✦ View All 10 Himalayan Locations &amp; Offbeat Circuits ▾';
   }
 }
 

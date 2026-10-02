@@ -802,6 +802,40 @@ const HIMORA_DATA = {
         }
       ]
     }
+    ,{
+      id: "kullu-naggar",
+      location: "Kullu & Naggar",
+      tagline: "River Valleys, Apple Orchards & Quiet Mountain Roads",
+      altitude: "1,220 m - 1,950 m",
+      driveTime: "6.5 hrs from Chandigarh",
+      bestSeason: "March to June | September to November",
+      coverImage: "images/landmarks/solang.jpg",
+      sitesCount: "3 Valley Stops • 3 Slow-Travel Experiences",
+      packageId: "manali-solang-alpine",
+      localFood: "Kullu Trout, Siddu with ghee, Himachali Dham",
+      items: [
+        { name: "Naggar Castle & Heritage Village", altitude: "1,800 m", type: "Heritage & Views", desc: "A cedar-and-stone hill retreat overlooking the Kullu valley with old Himalayan architecture and mountain panoramas.", image: "images/landmarks/hadimba.jpg", activity: "Castle Walk • Village Trails • Mountain Photography" },
+        { name: "Kullu River & Orchard Belt", altitude: "1,220 m", type: "Nature & Slow Travel", desc: "A relaxed stretch of the Beas valley surrounded by apple orchards, pine slopes and local village life.", image: "images/landmarks/parvati_kasol.jpg", activity: "Riverside Walks • Orchard Visits • Local Food Stops" },
+        { name: "Great Himalayan Gateway", altitude: "1,950 m", type: "Mountain Drive", desc: "A scenic base for connecting toward Manali, Jalori and the higher valleys of Himachal.", image: "images/landmarks/solang.jpg", activity: "Scenic Drives • Cafe Stops • Custom Road Trips" }
+      ]
+    },
+    {
+      id: "dalhousie-khajjiar",
+      location: "Dalhousie & Khajjiar",
+      tagline: "Colonial Charm, Cedar Forests & Alpine Meadows",
+      altitude: "1,970 m - 2,650 m",
+      driveTime: "8 hrs from Chandigarh",
+      bestSeason: "March to June | December to February for Snow",
+      coverImage: "images/landmarks/triund.jpg",
+      sitesCount: "3 Mountain Stops • 3 Nature Experiences",
+      packageId: "dharamshala-triund-dalai",
+      localFood: "Himachali Rajma, Madra, Siddu & Mountain Tea",
+      items: [
+        { name: "Khajjiar Alpine Meadow", altitude: "1,920 m", type: "Meadow & Forest", desc: "A wide green meadow framed by dense cedar forests and surrounding mountain ridges.", image: "images/landmarks/triund.jpg", activity: "Meadow Walk • Horse Riding • Forest Photography" },
+        { name: "Dalhousie Colonial Lanes", altitude: "1,970 m", type: "Heritage Escape", desc: "A slow-paced hill town known for colonial-era streets, churches, cedar avenues and old-world viewpoints.", image: "images/landmarks/ridge_church.jpg", activity: "Heritage Walk • Cafe Hopping • Sunset Views" },
+        { name: "Kalatop Forest Trails", altitude: "2,450 m", type: "Pine & Cedar Wilderness", desc: "Quiet forest roads and viewpoints for travellers looking for a peaceful Himalayan escape.", image: "images/landmarks/jibhi_waterfall.jpg", activity: "Nature Walk • Birdwatching • Scenic Drives" }
+      ]
+    }
   ],
 
   // Real Mountain Aesthetic & Vibe Gallery (Snow, Cozy Rooms, Bonfire Parties)

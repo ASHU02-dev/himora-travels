@@ -3680,3 +3680,145 @@ body.theme-dark .agency-showcase-card {
   }
 }
 
+
+/* =====================================================================
+   HIMORA HOME — COMPACT SERVICE LAUNCHER
+   ===================================================================== */
+.home-service-hub {
+  padding: 4.5rem 0 3.5rem;
+  background:
+    radial-gradient(circle at 8% 20%, rgba(56,189,248,.09), transparent 30%),
+    radial-gradient(circle at 92% 80%, rgba(16,185,129,.07), transparent 28%),
+    var(--bg-deep);
+}
+.compact-section-head { margin-bottom: 1.7rem !important; }
+.compact-section-head p { max-width: 650px; }
+.home-service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.home-action-card {
+  position: relative;
+  min-height: 245px;
+  overflow: hidden;
+  padding: 1.35rem;
+  border: 1px solid var(--border-glass);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  box-shadow: var(--shadow-sm);
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.home-action-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56,189,248,.48);
+  box-shadow: 0 18px 45px rgba(2,132,199,.14);
+}
+.home-action-glow {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  right: -45px;
+  top: -45px;
+  border-radius: 50%;
+  background: rgba(56,189,248,.14);
+  filter: blur(4px);
+}
+.home-action-stay .home-action-glow { background: rgba(16,185,129,.13); }
+.home-action-trip .home-action-glow { background: rgba(245,158,11,.13); }
+.home-action-plan .home-action-glow { background: rgba(168,85,247,.13); }
+.home-action-icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  background: rgba(255,255,255,.08);
+  font-size: 1.45rem;
+}
+.home-action-kicker {
+  color: var(--accent-sky);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+.home-action-content h3 { margin: .4rem 0 .55rem; font-size: 1.15rem; line-height: 1.2; }
+.home-action-content p { color: var(--text-muted); font-size: .82rem; line-height: 1.55; min-height: 52px; margin-bottom: 1rem; }
+.home-action-content .btn { width: 100%; }
+.home-trust-strip {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+  background: rgba(255,255,255,.025);
+}
+.home-trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; color:var(--text-muted); font-size:.78rem; font-weight:700; }
+
+/* =====================================================================
+   MAP — TOPO/RADAR REFINEMENT
+   ===================================================================== */
+.map-viewport {
+  min-height: 500px;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(34,197,94,.16), transparent 24%),
+    radial-gradient(circle at 78% 25%, rgba(245,158,11,.14), transparent 23%),
+    radial-gradient(circle at 55% 72%, rgba(56,189,248,.20), transparent 30%),
+    linear-gradient(135deg, #061827 0%, #092c43 48%, #061b2d 100%);
+  box-shadow: inset 0 0 80px rgba(0,0,0,.3), 0 22px 60px rgba(0,0,0,.18);
+}
+.map-viewport::before,
+.map-viewport::after {
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border: 1px solid rgba(125,211,252,.08);
+  border-radius: 50% 43% 57% 46%;
+  transform: rotate(-13deg);
+  pointer-events:none;
+  box-shadow: 0 0 0 24px rgba(56,189,248,.025), 0 0 0 52px rgba(56,189,248,.018);
+}
+.map-viewport::after {
+  inset: 20% 15%;
+  border-radius: 42% 58% 48% 52%;
+  transform: rotate(23deg);
+  border-color: rgba(16,185,129,.08);
+}
+.map-svg-canvas { opacity: .48; mix-blend-mode: screen; }
+.map-pins-layer { z-index: 3; }
+.map-valley-pin {
+  border-color: rgba(125,211,252,.34);
+  background: rgba(3,15,27,.78);
+  box-shadow: 0 8px 18px rgba(0,0,0,.22), inset 0 0 14px rgba(56,189,248,.06);
+}
+.map-valley-pin .pin-dot {
+  display:block; width:9px; height:9px; border-radius:50%;
+  background:#38bdf8; box-shadow:0 0 14px #38bdf8;
+}
+.map-valley-pin.is-selected { animation: mapPinPulse 1.8s ease-in-out infinite; }
+@keyframes mapPinPulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(56,189,248,.38), 0 0 24px rgba(56,189,248,.35); }
+  50% { box-shadow:0 0 0 10px rgba(56,189,248,0), 0 0 34px rgba(56,189,248,.65); }
+}
+.pin-kullu { top: 53%; left: 36%; }
+.pin-dalhousie { top: 26%; left: 8%; }
+.map-top-bar, .map-viewport-footer { position:relative; z-index:5; }
+.map-live-tag { box-shadow: 0 0 18px rgba(16,185,129,.12); }
+.map-detail-card { backdrop-filter: blur(12px); }
+
+@media (max-width: 1050px) {
+  .home-service-grid { grid-template-columns: repeat(2, 1fr); }
+  .home-trust-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .home-service-hub { padding: 3.2rem 0 2.5rem; }
+  .home-service-grid { grid-template-columns: 1fr; }
+  .home-action-card { min-height: 0; }
+  .home-action-content p { min-height: 0; }
+  .home-trust-grid { grid-template-columns: 1fr 1fr; font-size:.72rem; }
+  .map-viewport { min-height: 430px; padding: 1.3rem .8rem; }
+  .map-valley-pin { transform: scale(.82); transform-origin:center; }
+  .map-valley-pin:hover { transform:scale(.9); }
+  .pin-kullu { top:55%; left:31%; }
+  .pin-dalhousie { top:22%; left:2%; }
+}

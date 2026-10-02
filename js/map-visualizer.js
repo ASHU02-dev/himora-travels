@@ -74,6 +74,26 @@ const valleyData = {
     accent: "#06b6d4",
     bgPhoto: "images/landmarks/bir.jpg"
   },
+  kullu: {
+    title: "Kullu & Naggar Valley",
+    altitude: "1,220 m to 1,950 m",
+    driveTime: "6.5 hrs from Chandigarh",
+    bestFor: "River valleys, Naggar Castle, local villages, orchards and quiet mountain drives",
+    dish: "Kullu trout, Siddu with ghee & Himachali Dham",
+    packageId: "manali-solang-alpine",
+    accent: "#22c55e",
+    bgPhoto: "images/landmarks/solang.jpg"
+  },
+  dalhousie: {
+    title: "Dalhousie & Khajjiar",
+    altitude: "1,970 m to 2,650 m",
+    driveTime: "8 hrs from Chandigarh",
+    bestFor: "Colonial lanes, cedar forests, Khajjiar meadows and slow mountain escapes",
+    dish: "Himachali Rajma, Madra & local mountain tea",
+    packageId: "dharamshala-triund-dalai",
+    accent: "#a78bfa",
+    bgPhoto: "images/landmarks/triund.jpg"
+  },
   tirthan: {
     title: "Tirthan Valley & Jibhi",
     altitude: "1,600 m to 3,120 m (Jalori Pass)",
