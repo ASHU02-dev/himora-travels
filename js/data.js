@@ -819,9 +819,6 @@ const HIMORA_DATA = {
         {name:"Kalatop Forest Escape",altitude:"2,440 m",type:"Forest Trail",desc:"A peaceful cedar-and-pine forest experience away from busy hill-town roads.",image:"images/landmarks/ghnp.jpg",activity:"Forest Walk • Birdwatching • Picnic Stops"}
       ]
     }
-  ,
-    { id:"kullu-naggar", location:"Kullu & Naggar", tagline:"River Valleys, Cedar Forests & Old Himalayan Villages", altitude:"1,220 m - 2,050 m", driveTime:"7 hrs from Chandigarh", bestSeason:"March to June | September to November", coverImage:"images/landmarks/solang.jpg", sitesCount:"3 Scenic Sites • Riverside Experiences", packageId:"manali-solang-alpine", localFood:"Siddu, trout and traditional Himachali thalis", items:[{name:"Naggar Castle & Art Village",altitude:"1,800 m",type:"Heritage & Art",desc:"A quiet old-world mountain base with timber architecture, valley views and local art traditions.",image:"images/landmarks/hadimba.jpg",activity:"Castle Walk • Art Gallery • Village Cafés"},{name:"Beas Riverside & Kullu Valley",altitude:"1,220 m",type:"River & Valley",desc:"A greener, slower side of the valley with river drives, orchards and traditional villages.",image:"images/landmarks/solang.jpg",activity:"Riverside Drive • Orchard Stops • Local Markets"},{name:"Great Himalayan Mountain Loop",altitude:"2,050 m",type:"Scenic Road Trip",desc:"A flexible circuit linking Kullu, Naggar and Manali.",image:"images/landmarks/rohtang.jpg",activity:"Scenic Drives • Photo Stops • Café Hopping"}] },
-    { id:"dalhousie-khajjiar", location:"Dalhousie & Khajjiar", tagline:"Colonial Hills, Cedar Meadows & Slow Mountain Days", altitude:"1,970 m - 2,730 m", driveTime:"7.5 hrs from Chandigarh", bestSeason:"March to June | December to February for Snow", coverImage:"images/landmarks/kufri.jpg", sitesCount:"3 Scenic Sites • Forest & Meadow Trails", packageId:"dharamshala-triund-dalai", localFood:"Himachali rajma, madra and local bakery treats", items:[{name:"Khajjiar Meadow",altitude:"1,920 m",type:"Meadow & Forest",desc:"A wide green meadow framed by cedar forests and mountain views.",image:"images/landmarks/kufri.jpg",activity:"Meadow Walks • Horse Rides • Photography"},{name:"Dalhousie Heritage Streets",altitude:"2,000 m",type:"Colonial Heritage",desc:"Quiet hill streets, old churches and viewpoints across five connected hills.",image:"images/landmarks/ridge_church.jpg",activity:"Heritage Walk • Café Stops • Sunset Viewpoints"},{name:"Kalatop Forest Escape",altitude:"2,440 m",type:"Forest Trail",desc:"A peaceful cedar-and-pine forest experience away from busy roads.",image:"images/landmarks/ghnp.jpg",activity:"Forest Walk • Birdwatching • Picnic Stops"}] }
   ],
 
   // Real Mountain Aesthetic & Vibe Gallery (Snow, Cozy Rooms, Bonfire Parties)
@@ -830,14 +827,14 @@ const HIMORA_DATA = {
       category: "cozy-stays",
       title: "Private Alpine Chalets & Jacuzzi Suites",
       desc: "Warm cedar-wood interiors, roaring fireplaces, glass roofs for stargazing, and private jacuzzis overlooking snow-laden pine valleys.",
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
+      image: "images/landmarks/hadimba.jpg",
       tag: "Cozy Stays"
     },
     {
       category: "cozy-stays",
       title: "Luxury Apple Orchard Glass Cottages",
       desc: "Wake up surrounded by blooming apple blossoms or snowy orchards with floor-to-ceiling panoramic views of Pir Panjal peaks.",
-      image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80",
+      image: "images/landmarks/kalpa.jpg",
       tag: "Orchard Chalet"
     },
     {
@@ -851,14 +848,14 @@ const HIMORA_DATA = {
       category: "parties-nights",
       title: "Riverside Bonfires & Mountain Acoustic Nights",
       desc: "Golden crackling pine bonfires by the Beas and Parvati rivers. Live guitars, acoustic singers, roasted marshmallows, and siddu feasts.",
-      image: "https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?auto=format&fit=crop&w=800&q=80",
+      image: "images/landmarks/parvati_kasol.jpg",
       tag: "Bonfire & Music"
     },
     {
       category: "parties-nights",
       title: "Bohemian Mountain Cafe Parties & Celebrations",
       desc: "Old Manali and Kasol's famous night culture: international cuisine, DJ parties, fairy lights, and meeting global mountain wanderers.",
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+      image: "images/landmarks/tosh.jpg",
       tag: "Nightlife & Cafes"
     },
     {

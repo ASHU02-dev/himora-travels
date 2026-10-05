@@ -5,13 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Himora Travels — Bespoke Himalayan Expeditions & Luxury Mountain Journeys</title>
   <meta name="description" content="Handcrafted Himalayan expeditions, private 4x4 chauffeur tours, boutique valley stays, and local expertise. Based in Shimla, Himachal Pradesh.">
+  <meta name="theme-color" content="#071a2b">
+
+  <!-- Open Graph / WhatsApp / Facebook Preview Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Himora Travels — Bespoke Himalayan Expeditions &amp; Luxury Mountain Journeys">
+  <meta property="og:description" content="Native Shimla travel specialists crafting personalized Himalayan tour packages, reliable hill-certified cabs, and handpicked wooden chalets across Manali, Spiti, Kasol, and Dharamshala.">
+  <meta property="og:image" content="images/landmarks/solang.jpg">
+  <meta property="og:url" content="https://ashu02-dev.github.io/himora-travels/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Himora Travels — Himachal's Trusted Travel Agency">
+  <meta name="twitter:description" content="Bespoke journeys, certified mountain cabs &amp; cozy chalets across Himachal Pradesh.">
+  <meta name="twitter:image" content="images/landmarks/solang.jpg">
 
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=4.0">
 </head>
 <body>
 
@@ -110,10 +124,9 @@
          =================================================================== -->
     <div class="agency-tab-panel is-active" id="tab-home"><section class="hero">
         <div class="hero-video-backdrop">
-          <video id="heroVideo" class="hero-cinematic-video" autoplay muted loop playsinline preload="auto" poster="images/landmarks/rohtang.jpg">
+          <video id="heroVideo" class="hero-cinematic-video" autoplay muted loop playsinline preload="metadata" poster="images/landmarks/rohtang.jpg">
             <source src="assets/video/himalaya_snow_drive.webm" type="video/webm">
           </video>
-          <img src="images/landmarks/rohtang.jpg" alt="Rohtang Pass High Himalayas" class="hero-cinematic-bg hero-video-fallback" fetchpriority="high" decoding="async">
         </div>
         <div class="hero-gradient-overlay"></div>
         <button class="hero-video-toggle" id="heroVideoToggle" aria-label="Pause/Play Video" title="Pause/Play Himalayan Snow Drive Video">⏸</button>
@@ -161,6 +174,99 @@
 <section class="home-destinations-section"><div class="container"><div class="home-destinations-top"><div class="section-head" style="margin-bottom:0"><span class="section-tag">6 Major Picks</span><h2>Where Do You Want To <strong>Go?</strong></h2></div><button class="btn btn-outline btn-sm" data-switch-tab="explore">View All 10 Locations →</button></div><div class="home-destination-grid">
 <button class="home-destination-card" data-switch-tab="explore"><img src="images/landmarks/ridge_church.jpg" alt="Shimla & Kufri" loading="lazy"><span><b>Shimla &amp; Kufri</b><small>Heritage • Snow • Cafés</small></span></button><button class="home-destination-card" data-switch-tab="explore"><img src="images/landmarks/solang.jpg" alt="Manali & Solang" loading="lazy"><span><b>Manali &amp; Solang</b><small>Snow • Adventure • Passes</small></span></button><button class="home-destination-card" data-switch-tab="explore"><img src="images/landmarks/key_monastery.jpg" alt="Spiti Valley" loading="lazy"><span><b>Spiti Valley</b><small>Monasteries • High Passes</small></span></button><button class="home-destination-card" data-switch-tab="explore"><img src="images/landmarks/parvati_kasol.jpg" alt="Kasol & Parvati" loading="lazy"><span><b>Kasol &amp; Parvati</b><small>Riverside • Treks • Cafés</small></span></button><button class="home-destination-card" data-switch-tab="explore"><img src="images/landmarks/triund.jpg" alt="Dharamshala" loading="lazy"><span><b>Dharamshala</b><small>Tibetan culture • Triund</small></span></button><button class="home-destination-card" data-switch-tab="explore"><img src="images/landmarks/chitkul.jpg" alt="Kinnaur & Chitkul" loading="lazy"><span><b>Kinnaur &amp; Chitkul</b><small>Orchards • Villages • High roads</small></span></button>
 </div></div></section>
+
+      <!-- AUTO-CHANGING VALLEY SHOWCASE (ADVENTURES & FAMOUS FOOD) -->
+      <section class="agency-showcase-section" id="agencyShowcaseContainer">
+        <div class="container">
+          <div class="section-head compact-section-head">
+            <span class="section-tag">Explore Himachal Live</span>
+            <h2>Signature Valleys, <strong>Adventures &amp; Local Flavours</strong></h2>
+            <p>Rotating highlights across Himachal's top mountain valleys with genuine routes, experiences, and local cuisine.</p>
+          </div>
+
+          <div class="agency-showcase-card">
+            <div class="showcase-progress-wrap">
+              <div class="showcase-progress-bar" id="showcaseProgressBar"></div>
+            </div>
+
+            <div class="showcase-layout">
+              <!-- Left: Media -->
+              <div class="showcase-media">
+                <img id="showcaseImg" class="showcase-img" src="images/landmarks/solang.jpg" alt="Manali" loading="eager">
+                <div class="showcase-media-overlay"></div>
+                <div class="showcase-floating-badges">
+                  <span class="showcase-alt-badge" id="showcaseAlt">▲ 2,050m - 3,978m</span>
+                  <span class="showcase-live-tag">● Rotating Valley</span>
+                </div>
+                <div class="showcase-media-caption">
+                  <h4 id="showcaseCapTitle">Manali &amp; Rohtang Pass</h4>
+                  <p id="showcaseCapSub">Year-Round (Dec-Feb for Heavy Snow)</p>
+                </div>
+              </div>
+
+              <!-- Right: Content & Adventure/Food Highlights -->
+              <div class="showcase-body">
+                <div>
+                  <span class="showcase-eyebrow">✦ Real Himachal Experience</span>
+                  <h3 id="showcaseTitle">Manali &amp; Solang Alpine Valley</h3>
+                  <p class="showcase-tagline" id="showcaseTagline">High Snow Glaciers, Rohtang Pass &amp; Bohemian Riverside Cafes</p>
+
+                  <div class="showcase-features-stack">
+                    <div class="showcase-feature-item">
+                      <div class="showcase-feat-icon">🪂</div>
+                      <div class="showcase-feat-text">
+                        <strong>Signature Adventures</strong>
+                        <span id="showcaseAdvText">Snow Skiing at Solang, Rohtang Snowmobiling, Tandem Paragliding, Beas River Rafting, ATV Quad Biking</span>
+                      </div>
+                    </div>
+
+                    <div class="showcase-feature-item">
+                      <div class="showcase-feat-icon">🍲</div>
+                      <div class="showcase-feat-text">
+                        <strong>Famous Mountain Food</strong>
+                        <span id="showcaseFoodText">Authentic Himachali Siddu with hot pure ghee, Wood-smoked Beas river trout, Bohemian cafes in Old Manali</span>
+                      </div>
+                    </div>
+
+                    <div class="showcase-feature-item">
+                      <div class="showcase-feat-icon">🚗</div>
+                      <div class="showcase-feat-text">
+                        <strong>Route &amp; Drive Time</strong>
+                        <span id="showcaseDriveText">7 hrs from Chandigarh via NH-3 Expressway • Swift Dzire or Innova Crysta</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="showcase-bottom-area">
+                  <div class="showcase-actions">
+                    <button class="btn btn-solid" id="showcaseDetailsBtn">View Valley Details ➜</button>
+                    <button class="btn btn-outline" id="showcaseBookCabBtn">Book Cab For This Route</button>
+                  </div>
+
+                  <div class="showcase-controls-bar">
+                    <button class="showcase-nav-btn" id="showcasePrevBtn" aria-label="Previous Location">‹</button>
+                    
+                    <div class="showcase-dots">
+                      <button class="showcase-dot is-active" onclick="selectShowcaseSlide(0)" aria-label="Slide 1"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(1)" aria-label="Slide 2"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(2)" aria-label="Slide 3"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(3)" aria-label="Slide 4"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(4)" aria-label="Slide 5"></button>
+                      <button class="showcase-dot" onclick="selectShowcaseSlide(5)" aria-label="Slide 6"></button>
+                    </div>
+
+                    <span class="showcase-counter" id="showcaseCounter">01 / 06</span>
+
+                    <button class="showcase-nav-btn" id="showcaseNextBtn" aria-label="Next Location">›</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 <section class="home-proof-section"><div class="container home-proof-grid"><div><strong>7+</strong><span>Years in the mountains</span></div><div><strong>3,800+</strong><span>Travelers escorted</span></div><div><strong>32+</strong><span>Valleys &amp; villages reached</span></div><div><strong>24/7</strong><span>On-ground support</span></div></div></section>
 <section class="home-final-cta"><div class="container home-final-cta-inner"><div><span class="section-tag">Not Sure Yet?</span><h2>Give Us The Dates. <strong>We'll Shape The Route.</strong></h2><p>Cab, stay, sightseeing or the full trip — tell us what you need.</p></div><button class="btn btn-solid" data-switch-tab="booking">Build My Custom Trip →</button></div></section></div>
 
@@ -365,7 +471,7 @@
       <!-- Compact Expand/Collapse Button for Extra Valleys -->
       <div class="dest-toggle-wrap">
         <button class="btn btn-outline" id="destToggleBtn" onclick="toggleExtraValleys()">
-          ✦ View All 8+ Himalayan Valleys & Offbeat Circuits (Kinnaur, Bir Billing) ▾
+          ✦ View All 10 Himalayan Locations &amp; Offbeat Circuits (Kinnaur, Bir, Kullu, Dalhousie) ▾
         </button>
       </div>
     </section>
@@ -943,10 +1049,10 @@
   </a>
 
   <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/soundscape.js"></script>
-  <script src="js/map-visualizer.js"></script>
-  <script src="js/planner.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/data.js?v=4.0"></script>
+  <script src="js/soundscape.js?v=4.0"></script>
+  <script src="js/map-visualizer.js?v=4.0"></script>
+  <script src="js/planner.js?v=4.0"></script>
+  <script src="js/app.js?v=4.0"></script>
 </body>
 </html>
