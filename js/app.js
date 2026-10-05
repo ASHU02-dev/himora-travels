@@ -892,10 +892,11 @@ window.toggleExtraValleys = toggleExtraValleys;
 window.currentTab = 'tab-home';
 
 function setupTabNavigation() {
-  const tabBtns = document.querySelectorAll('.agency-tab-btn');
   const tabPanels = document.querySelectorAll('.agency-tab-panel');
+  if (!tabPanels.length) return;
 
-  if (!tabBtns.length || !tabPanels.length) return;
+  const tabBtns = document.querySelectorAll('.agency-tab-btn');
+  const mainNavLinks = document.querySelectorAll('.main-nav a[data-switch-tab]');
 
   function switchTab(targetId, updateHash = true, smoothScroll = false) {
     if (!targetId) return;
@@ -909,18 +910,19 @@ function setupTabNavigation() {
 
     window.currentTab = cleanId;
 
-    // Update buttons
-    tabBtns.forEach(btn => {
+    // Update buttons if any secondary pill bar exists
+    document.querySelectorAll('.agency-tab-btn').forEach(btn => {
       const isMatch = btn.dataset.tab === cleanId;
       btn.classList.toggle('is-active', isMatch);
       btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
     });
 
-    // Update main nav links if any
+    // Update main nav links
     document.querySelectorAll('.main-nav a[data-switch-tab]').forEach(link => {
       const tabTarget = link.dataset.switchTab;
       const isMatch = `tab-${tabTarget}` === cleanId;
       link.classList.toggle('is-active', isMatch);
+      link.setAttribute('aria-current', isMatch ? 'page' : 'false');
     });
 
     // Update panels with direct style display guarantee
@@ -944,12 +946,14 @@ function setupTabNavigation() {
       }
     }
 
-    // Scroll to top of tab container
+    // Scroll to top of tab container or main content smoothly
     if (smoothScroll) {
-      const tabAnchor = document.getElementById('agencyTabBar');
-      if (tabAnchor) {
-        const topOffset = tabAnchor.getBoundingClientRect().top + window.pageYOffset - 75;
-        window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      const mainContent = document.getElementById('mainContent') || document.querySelector('main');
+      if (mainContent) {
+        const topOffset = mainContent.getBoundingClientRect().top + window.pageYOffset - 75;
+        window.scrollTo({ top: Math.max(0, topOffset), behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
@@ -968,6 +972,15 @@ function setupTabNavigation() {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       switchTab(btn.dataset.tab, true, false);
+    });
+  });
+
+  // Main nav click listeners
+  mainNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tabTarget = link.dataset.switchTab;
+      switchTab(tabTarget, true, true);
     });
   });
 
