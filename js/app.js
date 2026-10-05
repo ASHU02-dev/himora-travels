@@ -5,59 +5,79 @@
 
 window.currentCurrency = 'INR';
 
-document.addEventListener('DOMContentLoaded', () => {
-  initApp();
-});
+function bootHimora() {
+  try {
+    initApp();
+  } catch (err) {
+    console.error('Himora initApp error:', err);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootHimora);
+} else {
+  bootHimora();
+}
 
 function initApp() {
-  renderPassStatus();
-  renderWeatherStations();
-  renderPackages('all');
-  renderFamousSites();
-  renderMountainVibes('all');
-  renderFleet();
-  renderTestimonials();
-  renderFaqs();
-  setupCurrencySelector();
-  setupPackageFilters();
-  setupVibeFilters();
-  setupModalHandlers();
-  setupScrollEffects();
-  setupCounters();
-  setupCabFareCalculator();
-  setupThemeToggle();
-  setupTabNavigation();
-  initAutoShowcase();
-  setupHeroVideo();
-  setupQuickBookingStrip();
+  // CRITICAL: Setup tab navigation FIRST so tabs always work even if any sub-renderer has an issue
+  try { setupTabNavigation(); } catch (e) { console.error('setupTabNavigation error:', e); }
+  try { setupThemeToggle(); } catch (e) { console.error('setupThemeToggle error:', e); }
+
+  // Sub-renderers wrapped safely
+  try { renderPassStatus(); } catch (e) { console.error(e); }
+  try { renderWeatherStations(); } catch (e) { console.error(e); }
+  try { renderPackages('all'); } catch (e) { console.error(e); }
+  try { renderFamousSites(); } catch (e) { console.error(e); }
+  try { renderMountainVibes('all'); } catch (e) { console.error(e); }
+  try { renderFleet(); } catch (e) { console.error(e); }
+  try { renderTestimonials(); } catch (e) { console.error(e); }
+  try { renderFaqs(); } catch (e) { console.error(e); }
+  try { setupCurrencySelector(); } catch (e) { console.error(e); }
+  try { setupPackageFilters(); } catch (e) { console.error(e); }
+  try { setupVibeFilters(); } catch (e) { console.error(e); }
+  try { setupModalHandlers(); } catch (e) { console.error(e); }
+  try { setupScrollEffects(); } catch (e) { console.error(e); }
+  try { setupCounters(); } catch (e) { console.error(e); }
+  try { setupCabFareCalculator(); } catch (e) { console.error(e); }
+  try { initAutoShowcase(); } catch (e) { console.error(e); }
+  try { setupHeroVideo(); } catch (e) { console.error(e); }
+  try { setupQuickBookingStrip(); } catch (e) { console.error(e); }
   
-  if (window.initValleyMap) {
-    window.initValleyMap();
-  }
-  if (window.HimoraPlanner) {
-    window.HimoraPlanner.init();
-  }
+  try {
+    if (window.initValleyMap) window.initValleyMap();
+  } catch (e) { console.error(e); }
+
+  try {
+    if (window.HimoraPlanner) window.HimoraPlanner.init();
+  } catch (e) { console.error(e); }
 
   // Soundscape toggle
-  const soundBtn = document.getElementById('soundscapeToggle');
-  if (soundBtn && window.soundscape) {
-    soundBtn.addEventListener('click', () => {
-      window.soundscape.toggle();
-    });
-  }
+  try {
+    const soundBtn = document.getElementById('soundscapeToggle');
+    if (soundBtn && window.soundscape) {
+      soundBtn.addEventListener('click', () => {
+        window.soundscape.toggle();
+      });
+    }
+  } catch (e) { console.error(e); }
 
   // Floating CTA WhatsApp
-  document.querySelectorAll('.js-whatsapp-direct').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const customMsg = btn.dataset.msg || "Hi Himora Travels! I would like to plan an authentic Himalayan trip.";
-      window.open(`https://wa.me/${HIMORA_DATA.brand.whatsapp}?text=${encodeURIComponent(customMsg)}`, '_blank');
+  try {
+    document.querySelectorAll('.js-whatsapp-direct').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const customMsg = btn.dataset.msg || "Hi Himora Travels! I would like to plan an authentic Himalayan trip.";
+        window.open(`https://wa.me/${HIMORA_DATA.brand.whatsapp}?text=${encodeURIComponent(customMsg)}`, '_blank');
+      });
     });
-  });
+  } catch (e) { console.error(e); }
 
   // Year in footer
-  const yr = document.getElementById('currentYear');
-  if (yr) yr.textContent = new Date().getFullYear();
+  try {
+    const yr = document.getElementById('currentYear');
+    if (yr) yr.textContent = new Date().getFullYear();
+  } catch (e) {}
 }
 
 // ----------------------------------------------------------------
@@ -91,7 +111,13 @@ function setupThemeToggle() {
   const icon = document.getElementById('themeToggleIcon');
   if (!toggleBtn) return;
 
-  const savedTheme = localStorage.getItem('himora_theme') || 'light';
+  let savedTheme = 'light';
+  try {
+    savedTheme = localStorage.getItem('himora_theme') || 'light';
+  } catch (e) {
+    console.warn('localStorage not accessible:', e);
+  }
+
   if (savedTheme === 'dark') {
     document.body.classList.add('theme-dark');
     if (icon) icon.textContent = '☀️';
@@ -102,11 +128,16 @@ function setupThemeToggle() {
 
   toggleBtn.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('theme-dark');
-    localStorage.setItem('himora_theme', isDark ? 'dark' : 'light');
+    try {
+      localStorage.setItem('himora_theme', isDark ? 'dark' : 'light');
+    } catch (e) {
+      console.warn('localStorage save failed:', e);
+    }
     if (icon) icon.textContent = isDark ? '☀️' : '🌙';
     showToast(isDark ? "Dark theme activated" : "Alpine light theme activated");
   });
 }
+
 
 // ----------------------------------------------------------------
 // 2. Telemetry: Mountain Passes & Weather
@@ -867,6 +898,7 @@ function setupTabNavigation() {
   if (!tabBtns.length || !tabPanels.length) return;
 
   function switchTab(targetId, updateHash = true, smoothScroll = false) {
+    if (!targetId) return;
     let cleanId = targetId.startsWith('tab-') ? targetId : `tab-${targetId}`;
     if (cleanId === 'tab-fleet') cleanId = 'tab-cabs';
     if (cleanId === 'tab-homestays') cleanId = 'tab-stays';
@@ -884,16 +916,31 @@ function setupTabNavigation() {
       btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
     });
 
-    // Update panels
-    tabPanels.forEach(panel => {
-      panel.classList.toggle('is-active', panel.id === cleanId);
+    // Update main nav links if any
+    document.querySelectorAll('.main-nav a[data-switch-tab]').forEach(link => {
+      const tabTarget = link.dataset.switchTab;
+      const isMatch = `tab-${tabTarget}` === cleanId;
+      link.classList.toggle('is-active', isMatch);
     });
 
-    // Update URL hash
+    // Update panels with direct style display guarantee
+    tabPanels.forEach(panel => {
+      const isActive = panel.id === cleanId;
+      panel.classList.toggle('is-active', isActive);
+      panel.style.display = isActive ? 'block' : 'none';
+    });
+
+    // Update URL hash safely (avoids SecurityError on file:/// protocol)
     if (updateHash) {
       const hashName = cleanId.replace('tab-', '');
-      if (window.location.hash !== `#${hashName}`) {
-        history.replaceState(null, '', `#${hashName}`);
+      try {
+        if (window.location.hash !== `#${hashName}`) {
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', `#${hashName}`);
+          }
+        }
+      } catch (e) {
+        // file:/// protocol can throw SecurityError in Chromium, safe to ignore
       }
     }
 
@@ -916,11 +963,25 @@ function setupTabNavigation() {
 
   window.switchTab = (id, scroll = true) => switchTab(id, true, scroll);
 
+  // Tab buttons click listeners
   tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       switchTab(btn.dataset.tab, true, false);
     });
   });
+
+  // Delegated click listener on #agencyTabBar
+  const tabBar = document.getElementById('agencyTabBar');
+  if (tabBar) {
+    tabBar.addEventListener('click', (e) => {
+      const btn = e.target.closest('.agency-tab-btn');
+      if (btn && btn.dataset.tab) {
+        e.preventDefault();
+        switchTab(btn.dataset.tab, true, false);
+      }
+    });
+  }
 
   // Global handler for clicks on elements with data-switch-tab
   document.addEventListener('click', (e) => {
@@ -932,8 +993,24 @@ function setupTabNavigation() {
     }
   });
 
+  // Keyboard accessibility: Enter or Space on role="button" with data-switch-tab
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const trigger = e.target.closest('[data-switch-tab]');
+      if (trigger && (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA')) {
+        e.preventDefault();
+        const tabName = trigger.dataset.switchTab;
+        switchTab(tabName, true, true);
+      }
+    }
+  });
+
   // Check URL hash on initial load
-  const initialHash = window.location.hash.replace('#', '').toLowerCase();
+  let initialHash = '';
+  try {
+    initialHash = window.location.hash.replace('#', '').toLowerCase();
+  } catch (e) {}
+
   const validTabs = ['home', 'explore', 'cabs', 'fleet', 'stays', 'homestays', 'booking', 'planner'];
   if (initialHash && validTabs.includes(initialHash)) {
     switchTab(initialHash, false, false);
@@ -943,10 +1020,12 @@ function setupTabNavigation() {
 
   // Handle browser navigation
   window.addEventListener('hashchange', () => {
-    const newHash = window.location.hash.replace('#', '').toLowerCase();
-    if (newHash && validTabs.includes(newHash)) {
-      switchTab(newHash, false, false);
-    }
+    try {
+      const newHash = window.location.hash.replace('#', '').toLowerCase();
+      if (newHash && validTabs.includes(newHash)) {
+        switchTab(newHash, false, false);
+      }
+    } catch (e) {}
   });
 }
 
