@@ -11,7 +11,7 @@ DESKTOP_UPDATED = os.path.join(DESKTOP_HIMORA, "himora-travels-pro-updated")
 
 print("1. Staging and committing to git...")
 subprocess.run(["git", "add", "."], cwd=SRC, check=True)
-commit_msg = "Remove redundant tab bar, clarify hero video with frosted glass backdrop blur, add Siddu and brownies culinary section"
+commit_msg = "Comprehensive mobile phone optimization: swipeable nav, sticky booking bar, touch targets, iOS Safari zoom prevention & responsive grids"
 subprocess.run(["git", "commit", "-m", commit_msg], cwd=SRC)
 
 print("2. Pushing to origin main...")

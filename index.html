@@ -876,7 +876,7 @@
             </div>
 
             <!-- Pickup Location & Month -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+            <div class="planner-hub-grid">
               <div>
                 <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:0.4rem;">Pickup Hub</label>
                 <select id="plannerPickup" style="width:100%; background:rgba(255,255,255,0.06); border:1px solid var(--border-glass-light); padding:0.6rem 0.8rem; border-radius:var(--radius-sm); color:#fff;">
@@ -1030,13 +1030,13 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-links">
-        <a href="#packages">Packages</a>
-        <a href="#planner">Custom Trip</a>
-        <a href="#international">International Concierge</a>
-        <a href="#fleet">Cabs & 4x4</a>
-        <a href="#faqs">Travel FAQs</a>
+        <a href="#" data-switch-tab="explore">Packages &amp; Routes</a>
+        <a href="#" data-switch-tab="booking">Custom Trip Planner</a>
+        <a href="#" data-switch-tab="cabs">Cabs &amp; Fleet</a>
+        <a href="#" data-switch-tab="stays">Mountain Stays</a>
+        <a href="#" data-switch-tab="explore">Travel FAQs</a>
       </div>
-      <p>Himora Travels — High Altitude Mountain Expeditions & Chauffeur Services.</p>
+      <p>Himora Travels — High Altitude Mountain Expeditions &amp; Chauffeur Services.</p>
       <p style="margin-top:0.4rem; font-size:0.78rem;">&copy; <span id="currentYear"></span> Himora Travels Himachal. All rights reserved.</p>
     </div>
   </footer>
@@ -1139,9 +1139,9 @@
   <div class="mobile-sticky-bar" id="mobileStickyBar">
     <div class="bar-text">
       <strong>Venture Into Himachal</strong>
-      <small>Local Native Drivers & Homestays</small>
+      <small>Local Native Drivers &amp; Homestays</small>
     </div>
-    <a href="#planner" class="btn btn-emerald btn-sm">Build Custom Trip</a>
+    <button class="btn btn-emerald btn-sm" data-switch-tab="booking">Build Custom Trip</button>
   </div>
 
   <a href="https://wa.me/919816012345" target="_blank" rel="noopener" class="fab-whatsapp" aria-label="Quick WhatsApp Consultation">
